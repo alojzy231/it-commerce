@@ -1,6 +1,5 @@
 import React from 'react';
-import type { NextPage } from 'next';
 
-const Home: NextPage = () => <div>Test</div>;
-
-export default Home;
+export default function Home(): JSX.Element {
+  return <div>Test</div>;
+}
