@@ -18,7 +18,7 @@ IT-Commerce is a website of clothing company where you can search and order thei
 
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org)
-- [StyledComponents](https://styled-components.com/)
+- [styled-components](https://styled-components.com/)
 
 ### Installation
 
