@@ -3,13 +3,13 @@ import React from 'react';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 
-import GlobalStyles from '../styles/GlobalStyles';
+import GlobalStyle from '../styles/GlobalStyle';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <ThemeProvider theme={{}}>
       <Component {...pageProps} />
-      <GlobalStyles />
+      <GlobalStyle />
     </ThemeProvider>
   );
 }

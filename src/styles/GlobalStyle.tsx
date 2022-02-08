@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import { Header1, Header2, Header3, Header4, Header5, Header6, ParagraphBig } from './typography';
 
-const GlobalStyles = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
     :root {
         font-size: 62.5%;
     }
@@ -40,4 +40,4 @@ const GlobalStyles = createGlobalStyle`
     }
 `;
 
-export default GlobalStyles;
+export default GlobalStyle;
