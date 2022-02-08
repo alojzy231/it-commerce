@@ -3,7 +3,7 @@ import React from 'react';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 
-import GlobalStyle from '../styles/GlobalStyle';
+import GlobalStyle from '@styles/GlobalStyle';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
