@@ -3,10 +3,15 @@ import React from 'react';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => (
-  <ThemeProvider theme={{}}>
-    <Component {...pageProps} />
-  </ThemeProvider>
-);
+import GlobalStyles from '../styles/GlobalStyles';
+
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+  return (
+    <ThemeProvider theme={{}}>
+      <Component {...pageProps} />
+      <GlobalStyles />
+    </ThemeProvider>
+  );
+}
 
 export default MyApp;
