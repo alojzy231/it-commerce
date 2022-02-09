@@ -30,8 +30,26 @@ export const colors: IColors = {
   },
 };
 
-const theme: DefaultTheme = {
+interface IMedias {
+  desktop: string;
+  tablet: string;
+  mobile: string;
+}
+
+export const medias: IMedias = {
+  desktop: '1440px',
+  tablet: '1200px',
+  mobile: '690px',
+};
+
+interface ITheme extends DefaultTheme {
+  colors: IColors;
+  medias: IMedias;
+}
+
+const theme: ITheme = {
   colors,
+  medias,
 };
 
 export default theme;

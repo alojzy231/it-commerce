@@ -4,11 +4,15 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from '@styles/GlobalStyle';
+import theme from '@styles/theme';
+import Layout from '@generic/Layout';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
-    <ThemeProvider theme={{}}>
-      <Component {...pageProps} />
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
       <GlobalStyle />
     </ThemeProvider>
   );
