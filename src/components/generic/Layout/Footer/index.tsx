@@ -1,11 +1,18 @@
 import React from 'react';
 
-import { FooterContainer, FooterWrapper } from './Footer.styles';
+import { FooterContainer, FooterWrapper, FooterText, FooterPortfolioLink } from './Footer.styles';
 
 export default function Footer(): JSX.Element {
   return (
     <FooterWrapper>
-      <FooterContainer>Footer</FooterContainer>
+      <FooterContainer>
+        <FooterText>
+          Created with &lt;3 by{' '}
+          <FooterPortfolioLink href="https://damian-klos-resume.vercel.app/">
+            Damian Kłos
+          </FooterPortfolioLink>
+        </FooterText>
+      </FooterContainer>
     </FooterWrapper>
   );
 }
