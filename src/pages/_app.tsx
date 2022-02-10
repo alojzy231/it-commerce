@@ -8,6 +8,7 @@ import { Provider as ReduxProvider } from 'react-redux';
 import configureStore from '@redux/store';
 import GlobalStyle from '@styles/GlobalStyle';
 import theme from '@styles/theme';
+import IsMobileProvider from '@contextProviders/isMobileProvider';
 import Layout from '@generic/Layout';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
@@ -21,9 +22,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       </Head>
       <ReduxProvider store={store}>
         <ThemeProvider theme={theme}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <IsMobileProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </IsMobileProvider>
           <GlobalStyle />
         </ThemeProvider>
       </ReduxProvider>
