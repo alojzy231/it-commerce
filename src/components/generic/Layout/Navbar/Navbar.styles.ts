@@ -4,6 +4,9 @@ export const NavbarWrapper = styled.div`
   width: 100%;
   height: 6.4rem;
 
+  position: sticky;
+  top: 0;
+
   background-color: ${({ theme: { colors } }): string => colors.primary};
 
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.25);
