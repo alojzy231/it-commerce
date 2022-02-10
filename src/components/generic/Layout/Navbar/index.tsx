@@ -1,8 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 import PAGES_NAMES from '@consts/pagesNames';
+import { IRootState } from '@redux/reducers';
 
+import HamburgerMenu from './HamburgerMenu';
 import NavbarPageLink from './NavbarPageLink';
 import {
   NavbarContainer,
@@ -12,6 +15,8 @@ import {
 } from './Navbar.styles';
 
 export default function Navbar(): JSX.Element {
+  const isMobile: boolean = useSelector((state: IRootState) => state.isMobile);
+
   return (
     <NavbarWrapper>
       <NavbarContainer>
@@ -19,11 +24,15 @@ export default function Navbar(): JSX.Element {
           <NavbarCompanyName>IT-Commerce</NavbarCompanyName>
         </Link>
         <NavbarRightSection>
-          {PAGES_NAMES.map(({ name, url }) => (
-            <NavbarPageLink href={url} key={name}>
-              {name}
-            </NavbarPageLink>
-          ))}
+          {isMobile ? (
+            <HamburgerMenu />
+          ) : (
+            PAGES_NAMES.map(({ name, url }) => (
+              <NavbarPageLink href={url} key={name}>
+                {name}
+              </NavbarPageLink>
+            ))
+          )}
         </NavbarRightSection>
       </NavbarContainer>
     </NavbarWrapper>
