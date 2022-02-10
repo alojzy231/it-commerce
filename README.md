@@ -12,7 +12,7 @@
 
 ## About The Project
 
-IT-Commerce is a website of clothing company where you can search and order their products.
+IT-Commerce is a website of a clothing company where you can search and order their products.
 
 ### Built With
 

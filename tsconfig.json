@@ -18,6 +18,7 @@
     "paths": {
       "@styles/*": ["./src/styles/*"],
       "@consts/*": ["./src/consts/*"],
+      "@redux/*": ["./src/redux/*"],
       "@generic/*": ["./src/components/generic/*"]
     }
   },

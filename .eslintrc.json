@@ -1,6 +1,8 @@
 {
   "extends": ["@masterborn/eslint-config/frontend/typescript", "prettier"],
   "rules": {
+    "default-param-last": "off",
+    "@typescript-eslint/default-param-last": "off",
     "react/jsx-one-expression-per-line": "off",
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/label-has-associated-control": [
