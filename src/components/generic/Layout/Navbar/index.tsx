@@ -20,7 +20,9 @@ export default function Navbar(): JSX.Element {
         </Link>
         <NavbarRightSection>
           {PAGES_NAMES.map(({ name, url }) => (
-            <NavbarPageLink href={url}>{name}</NavbarPageLink>
+            <NavbarPageLink href={url} key={name}>
+              {name}
+            </NavbarPageLink>
           ))}
         </NavbarRightSection>
       </NavbarContainer>
