@@ -19,6 +19,7 @@
       "@styles/*": ["./src/styles/*"],
       "@consts/*": ["./src/consts/*"],
       "@redux/*": ["./src/redux/*"],
+      "@icons/*": ["./src/icons/*"],
       "@contextProviders/*": ["./src/contextProviders/*"],
       "@generic/*": ["./src/components/generic/*"]
     }
