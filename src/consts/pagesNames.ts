@@ -1,9 +1,15 @@
-type TPageName = {
+export type TSubpage = {
   name: string;
   url: string;
 };
 
-const PAGES_NAMES: TPageName[] = [
+type TPage = {
+  name: string;
+  url: string;
+  subpages?: TSubpage[];
+};
+
+const PAGES_NAMES: TPage[] = [
   {
     name: 'Sales',
     url: '/sales',
@@ -11,6 +17,36 @@ const PAGES_NAMES: TPageName[] = [
   {
     name: 'Collections',
     url: '/collections',
+    subpages: [
+      {
+        name: 'Junior',
+        url: '/collections/junior',
+      },
+      {
+        name: 'Mid',
+        url: '/collections/mid',
+      },
+      {
+        name: 'Senior',
+        url: '/collections/senior',
+      },
+      {
+        name: 'Architect',
+        url: '/collections/achitect',
+      },
+      {
+        name: 'DevOps',
+        url: '/collections/devops',
+      },
+      {
+        name: 'CSS',
+        url: '/collections/css',
+      },
+      {
+        name: 'HTML',
+        url: '/collections/html',
+      },
+    ],
   },
   {
     name: 'Accessories',

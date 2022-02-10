@@ -30,8 +30,8 @@ export default function Navbar(): JSX.Element {
             <HamburgerMenu />
           ) : (
             <>
-              {PAGES_NAMES.map(({ name, url }) => (
-                <NavbarPageLink href={url} key={name}>
+              {PAGES_NAMES.map(({ name, url, subpages }) => (
+                <NavbarPageLink href={url} subpages={subpages} key={name}>
                   {name}
                 </NavbarPageLink>
               ))}
