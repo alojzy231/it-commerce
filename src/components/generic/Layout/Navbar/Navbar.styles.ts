@@ -41,4 +41,5 @@ export const NavbarCompanyName = styled.h4`
 
 export const NavbarRightSection = styled.ul`
   display: flex;
+  align-items: center;
 `;

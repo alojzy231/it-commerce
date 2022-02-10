@@ -6,6 +6,8 @@ import PAGES_NAMES from '@consts/pagesNames';
 import { IRootState } from '@redux/reducers';
 
 import HamburgerMenu from './HamburgerMenu';
+import AccountButton from './AccountButton';
+import ShoppingCartButton from './ShoppingCartButton';
 import NavbarPageLink from './NavbarPageLink';
 import {
   NavbarContainer,
@@ -27,11 +29,15 @@ export default function Navbar(): JSX.Element {
           {isMobile ? (
             <HamburgerMenu />
           ) : (
-            PAGES_NAMES.map(({ name, url }) => (
-              <NavbarPageLink href={url} key={name}>
-                {name}
-              </NavbarPageLink>
-            ))
+            <>
+              {PAGES_NAMES.map(({ name, url }) => (
+                <NavbarPageLink href={url} key={name}>
+                  {name}
+                </NavbarPageLink>
+              ))}
+              <ShoppingCartButton />
+              <AccountButton />
+            </>
           )}
         </NavbarRightSection>
       </NavbarContainer>

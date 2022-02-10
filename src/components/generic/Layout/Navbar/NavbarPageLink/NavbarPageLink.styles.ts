@@ -17,10 +17,6 @@ const NavbarPageLinkName = styled.li`
   &:active {
     opacity: 0.6;
   }
-
-  &:last-child {
-    margin-right: 0;
-  }
 `;
 
 export default NavbarPageLinkName;
