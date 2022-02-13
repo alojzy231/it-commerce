@@ -10,6 +10,7 @@ interface IColors {
   black: string;
   white: string;
   closeButton: string;
+  backgroundShade: string;
   tints: {
     primaryTint20: string;
   };
@@ -25,6 +26,7 @@ export const colors: IColors = {
   black: '#000000',
   white: '#FFFFFF',
   closeButton: '#EC3030',
+  backgroundShade: '#00000099',
   tints: {
     primaryTint20: '#C9C4BB',
   },

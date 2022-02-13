@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import HamburgerIcon from '@icons/HamburgerIcon';
 import IconButton from '@generic/IconButton';
 
+import Sidebar from '../Sidebar';
+
 import HamburgerMenuContainer from './HamburgerMenu.styles';
 
 export default function HamburgerMenu(): JSX.Element {
-  const handleClick = (): void => {};
+  const [isSidebarOpened, toggleIsSidebarOpened] = useState<boolean>(false);
+
+  const handleOpenSidebar = (): void => toggleIsSidebarOpened(true);
+  const handleCloseSidebar = (): void => toggleIsSidebarOpened(false);
 
   return (
-    <HamburgerMenuContainer>
-      <IconButton icon={<HamburgerIcon />} onClick={handleClick} />
-    </HamburgerMenuContainer>
+    <>
+      <Sidebar isOpened={isSidebarOpened} closeSidebar={handleCloseSidebar} />
+      <HamburgerMenuContainer>
+        <IconButton icon={<HamburgerIcon />} onClick={handleOpenSidebar} />
+      </HamburgerMenuContainer>
+    </>
   );
 }
