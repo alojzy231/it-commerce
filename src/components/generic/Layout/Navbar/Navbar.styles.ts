@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { Header5 } from '@styles/typography';
+
 export const NavbarWrapper = styled.div`
   width: 100%;
   height: 6.4rem;
@@ -23,6 +25,10 @@ export const NavbarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.tablet}) {
+    padding-left: 2.4rem;
+  }
 `;
 
 export const NavbarCompanyName = styled.h4`
@@ -36,6 +42,12 @@ export const NavbarCompanyName = styled.h4`
 
   &:active {
     opacity: 0.6;
+  }
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.tablet}) {
+    ${Header5};
+
+    font-weight: bold;
   }
 `;
 
