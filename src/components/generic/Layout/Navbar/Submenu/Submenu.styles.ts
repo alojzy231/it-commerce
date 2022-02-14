@@ -4,6 +4,7 @@ import { Header6 } from '@styles/typography';
 
 export const SubmenuContainer = styled.ul`
   width: 100%;
+  min-width: max-content;
   padding: 0.8rem 1.6rem;
 
   position: absolute;
