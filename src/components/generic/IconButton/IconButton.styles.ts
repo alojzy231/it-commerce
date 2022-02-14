@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const StyledIconButton = styled.button`
+  height: fit-content;
+
   background-color: transparent;
   border: none;
 

@@ -1,15 +1,18 @@
 import React from 'react';
 
 import CloseIcon from '@icons/CloseIcon';
+import PAGES_NAMES from '@consts/pagesNames';
 
 import ShoppingCartButton from '../ShoppingCartButton';
 import AccountButton from '../AccountButton';
+import NavbarPageLink from '../NavbarPageLink';
 
 import {
   SidebarCloseButton,
   SidebarBackground,
   SidebarContainer,
   SidebarTopRow,
+  SidebarPagesLinksContainer,
 } from './Sidbar.styles';
 
 interface ISidebar {
@@ -27,6 +30,13 @@ export default function Sidebar({ isOpened, closeSidebar }: ISidebar): JSX.Eleme
           <ShoppingCartButton />
           <AccountButton />
         </SidebarTopRow>
+        <SidebarPagesLinksContainer>
+          {PAGES_NAMES.map(({ name, url, subpages }) => (
+            <NavbarPageLink isSidebar href={url} subpages={subpages} key={name}>
+              {name}
+            </NavbarPageLink>
+          ))}
+        </SidebarPagesLinksContainer>
       </SidebarContainer>
       <SidebarBackground onClick={closeSidebar} isOpened={isOpened} />
     </>

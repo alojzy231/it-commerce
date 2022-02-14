@@ -51,3 +51,9 @@ export const SidebarTopRow = styled.div`
 export const SidebarCloseButton = styled(IconButton)`
   margin-right: auto;
 `;
+
+export const SidebarPagesLinksContainer = styled.ul`
+  margin-top: 2.4rem;
+
+  list-style-type: none;
+`;

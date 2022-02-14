@@ -5,13 +5,8 @@ import { Header6 } from '@styles/typography';
 export const SubmenuContainer = styled.ul`
   width: 100%;
   min-width: max-content;
-  padding: 0.8rem 1.6rem;
-
-  position: absolute;
-  top: 100%;
 
   overflow-y: hidden;
-  transition: all 0.2s linear;
 
   background-color: ${({ theme: { colors } }): string => colors.background};
 
