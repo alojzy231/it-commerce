@@ -41,10 +41,12 @@ export const NavbarPageLinkContainer = styled.li`
   }
 
   ${NavbarPageLinkSubmenu} {
-    display: none;
+    max-height: 0;
+    visibility: hidden;
   }
 
   &:hover ${NavbarPageLinkSubmenu} {
-    display: block;
+    max-height: 60rem;
+    visibility: visible;
   }
 `;
