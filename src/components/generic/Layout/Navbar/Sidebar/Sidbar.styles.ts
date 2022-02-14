@@ -8,7 +8,7 @@ interface ISidebar {
 
 export const SidebarBackground = styled.button`
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
   display: ${({ isOpened }: ISidebar): string => (isOpened ? 'block' : 'none')};
 
@@ -23,7 +23,7 @@ export const SidebarBackground = styled.button`
 
 export const SidebarContainer = styled.ul`
   width: 30rem;
-  height: 100%;
+  height: 100vh;
 
   padding: 0.8rem;
 
@@ -35,6 +35,8 @@ export const SidebarContainer = styled.ul`
   transform: translateX(${({ isOpened }: ISidebar): string => (isOpened ? '0' : '30rem')});
 
   transition: transform 0.2s linear;
+
+  box-shadow: inset 2px 0px 0px rgba(0, 0, 0, 0.25);
 
   background-color: ${({ theme: { colors } }): string => colors.tints.primaryTint20};
 
