@@ -1,11 +1,18 @@
 import styled from 'styled-components';
 
 import { Header5 } from '@styles/typography';
-import IconButton from '@generic/IconButton';
+import ChevronDownIcon from '@icons/ChevronDownIcon';
 
 import Submenu from '../Submenu';
 
 export const NavbarPageLinkSubmenu = styled(Submenu)``;
+
+export const NavbarPageLinkChaviconIcon = styled(ChevronDownIcon)`
+  margin: 0.6rem 0.6rem 0.6rem 1.2rem;
+  path {
+    fill: ${({ theme: { colors } }): string => colors.black};
+  }
+`;
 
 export const NavbarPageLinkName = styled.a`
   padding: 0.6rem;
@@ -18,6 +25,13 @@ export const NavbarPageLinkName = styled.a`
   &:active {
     opacity: 0.6;
   }
+`;
+
+export const NavbarPageLinkContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  border: 0.1rem solid transparent;
 `;
 
 interface INavbarPageLinkWrapper {
@@ -49,6 +63,24 @@ export const NavbarPageLinkWrapper = styled.li`
     transition: all 0.2s linear;
   }
 
+  &:hover ${NavbarPageLinkContainer} {
+    background-color: ${({ theme: { colors } }): string => colors.selected};
+
+    border: 0.1rem solid ${({ theme: { colors } }): string => colors.black};
+
+    cursor: pointer;
+
+    ${NavbarPageLinkName} {
+      color: ${({ theme: { colors } }): string => colors.white};
+    }
+
+    ${NavbarPageLinkChaviconIcon} {
+      path {
+        fill: ${({ theme: { colors } }): string => colors.white};
+      }
+    }
+  }
+
   &:hover ${NavbarPageLinkSubmenu} {
     max-height: 100rem;
 
@@ -56,37 +88,5 @@ export const NavbarPageLinkWrapper = styled.li`
     border-width: 0.1rem;
 
     visibility: visible;
-  }
-`;
-
-export const NavbarPageLinkChaviconButton = styled(IconButton)`
-  margin: 0.6rem 0.6rem 0.6rem 1.2rem;
-  & path {
-    fill: ${({ theme: { colors } }): string => colors.black};
-  }
-`;
-
-export const NavbarPageLinkContainer = styled.div`
-  display: flex;
-  align-items: center;
-
-  border: 0.1rem solid transparent;
-
-  &:hover {
-    background-color: ${({ theme: { colors } }): string => colors.selected};
-
-    border: 0.1rem solid ${({ theme: { colors } }): string => colors.black};
-
-    cursor: pointer;
-
-    & ${NavbarPageLinkName} {
-      color: ${({ theme: { colors } }): string => colors.white};
-    }
-
-    & ${NavbarPageLinkChaviconButton} {
-      & path {
-        fill: ${({ theme: { colors } }): string => colors.white};
-      }
-    }
   }
 `;

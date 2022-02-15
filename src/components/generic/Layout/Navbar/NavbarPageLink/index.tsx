@@ -2,14 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 
 import { TSubpage } from '@consts/pagesNames';
-import ChevronDownIcon from '@icons/ChevronDownIcon';
 
 import {
   NavbarPageLinkName,
   NavbarPageLinkWrapper,
   NavbarPageLinkSubmenu,
   NavbarPageLinkContainer,
-  NavbarPageLinkChaviconButton,
+  NavbarPageLinkChaviconIcon,
 } from './NavbarPageLink.styles';
 
 export interface INavbarPageLink {
@@ -34,9 +33,7 @@ export default function NavbarPageLink({
         <Link href={href} passHref>
           <NavbarPageLinkName>{children}</NavbarPageLinkName>
         </Link>
-        {showChaviconDown && (
-          <NavbarPageLinkChaviconButton icon={<ChevronDownIcon />} onClick={(): void => {}} />
-        )}
+        {showChaviconDown && <NavbarPageLinkChaviconIcon />}
       </NavbarPageLinkContainer>
 
       {showSubmenu && <NavbarPageLinkSubmenu subpages={subpages} />}
