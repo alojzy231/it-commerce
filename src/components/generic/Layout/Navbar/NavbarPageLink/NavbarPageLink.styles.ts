@@ -12,8 +12,6 @@ export const NavbarPageLinkName = styled.a`
 
   ${Header5};
 
-  border: 0.1rem solid transparent;
-
   text-decoration: none;
   color: ${({ theme: { colors } }): string => colors.black};
 
@@ -32,8 +30,6 @@ export const NavbarPageLinkWrapper = styled.li`
 
   ${({ isSidebar }: INavbarPageLinkWrapper): string =>
     isSidebar ? 'margin-bottom: 1.2rem' : 'margin-right: 2.6rem'};
-
-  padding: 0.7rem 0;
 
   position: relative;
 
@@ -72,8 +68,9 @@ export const NavbarPageLinkChaviconButton = styled(IconButton)`
 
 export const NavbarPageLinkContainer = styled.div`
   display: flex;
-
   align-items: center;
+
+  border: 0.1rem solid transparent;
 
   &:hover {
     background-color: ${({ theme: { colors } }): string => colors.selected};
