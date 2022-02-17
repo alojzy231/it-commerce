@@ -1,9 +1,14 @@
 import React from 'react';
 
-export default function Home(): JSX.Element {
+import HomepageHero from '@homepage/HomepageHero';
+
+export default function Homeapage(): JSX.Element {
   return (
-    <div style={{ minHeight: '100vh' }}>
-      <h1>Test</h1>
-    </div>
+    <>
+      <HomepageHero />
+      <div style={{ minHeight: '100vh' }}>
+        <h1>Test</h1>
+      </div>
+    </>
   );
 }

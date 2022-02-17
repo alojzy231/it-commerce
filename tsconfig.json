@@ -20,8 +20,11 @@
       "@consts/*": ["./src/consts/*"],
       "@redux/*": ["./src/redux/*"],
       "@icons/*": ["./src/icons/*"],
+      "@img/*": ["./src/img/*"],
       "@contextProviders/*": ["./src/contextProviders/*"],
-      "@generic/*": ["./src/components/generic/*"]
+      "@hooks/*": ["./src/hooks/*"],
+      "@generic/*": ["./src/components/generic/*"],
+      "@homepage/*": ["./src/components/homepage/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
