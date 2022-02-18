@@ -26,7 +26,7 @@ export default function HomepageHero(): JSX.Element {
         </HomepageHeroSubtitleContainer>
       </HomepageHeroTextContainer>
 
-      <HomepageHeroImage src={photo.src} alt="Street at night" />
+      <HomepageHeroImage src={photo.src} alt="Photo by Tembela Bohle from Pexels" />
     </HomepageHeroContainer>
   );
 }
