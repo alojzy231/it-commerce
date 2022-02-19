@@ -16,7 +16,7 @@ export const HighlightedTitleBackground = styled.div`
   height: 100%;
 
   position: absolute;
-  top: 50%;
+  top: 40%;
   right: 2rem;
   z-index: 0;
 
