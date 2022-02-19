@@ -38,6 +38,10 @@ const GlobalStyle = createGlobalStyle`
     p{
         ${ParagraphBig}
     }
+
+    img{
+        content-visibility: auto;
+    }
 `;
 
 export default GlobalStyle;
