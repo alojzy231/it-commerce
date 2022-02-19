@@ -24,6 +24,8 @@ export const HomepageHeroImage = styled.img`
 
   @media (max-width: ${({ theme: { medias } }): string => medias.tablet}) {
     width: 69rem;
+    max-width: 100%;
+
     margin-right: auto;
   }
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
@@ -36,6 +38,8 @@ export const HomepageHeroTextContainer = styled.div`
 
   @media (max-width: ${({ theme: { medias } }): string => medias.tablet}) {
     width: 69rem;
+    max-width: 100%;
+
     margin: 3rem auto;
   }
 
