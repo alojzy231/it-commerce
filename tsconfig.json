@@ -23,6 +23,8 @@
       "@img/*": ["./src/img/*"],
       "@contextProviders/*": ["./src/contextProviders/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@clients/*": ["./src/clients/*"],
+      "@customTypes/*": ["./src/customTypes/*"],
       "@generic/*": ["./src/components/generic/*"],
       "@homepage/*": ["./src/components/homepage/*"]
     }

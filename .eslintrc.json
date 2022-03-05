@@ -14,5 +14,6 @@
         "depth": 3
       }
     ]
-  }
+  },
+  "ignorePatterns": ["src/clients/*"]
 }
