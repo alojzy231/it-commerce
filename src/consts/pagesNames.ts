@@ -49,8 +49,8 @@ const PAGES_NAMES: TPage[] = [
     ],
   },
   {
-    name: 'Accessories',
-    url: '/accessories',
+    name: 'Products',
+    url: '/products',
   },
 ];
 
