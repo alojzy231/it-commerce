@@ -31,14 +31,14 @@ export const ProductImagesSmallImagesContainer = styled.div`
   justify-content: space-between;
 `;
 export const ProductImagesSmallImageFiller = styled.div`
-  width: 25%;
+  width: 30%;
 
   aspect-ratio: 1 / 1;
 
   background-color: ${({ theme: { colors } }): string => colors.unloaded};
 `;
 export const ProductImagesSmallImage = styled.img`
-  width: 25%;
+  width: 30%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
 
