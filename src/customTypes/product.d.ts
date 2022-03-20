@@ -19,6 +19,7 @@ export enum EAvailableSizes {
 }
 
 export type TProduct = {
+  productId;
   productImage0: TProductImage;
   productImage1?: TProductImage;
   productImage2?: TProductImage;

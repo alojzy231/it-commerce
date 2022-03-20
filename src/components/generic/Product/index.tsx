@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 
 import { TProductImage, TProduct } from '@customTypes/product';
 import HighlightedTitle from '@generic/HighlightedTitle';
@@ -9,12 +10,14 @@ import {
   ProductContentSection,
   ProductName,
   ProductNameOnHomepage,
+  ProductSeeProductButton,
   ProductDescription,
   ProductDetailsSection,
-  ProductInputSection,
+  ProductDetailsSectionRow,
   ProductInputLabel,
   ProductInputSelect,
   ProductInputSelectOption,
+  ProductGenericButton,
 } from './Product.styles';
 import ProductImages from './ProductImages';
 
@@ -25,6 +28,7 @@ interface IProduct {
 
 export default function Product({ productData, isOnHomepage }: IProduct): JSX.Element {
   const {
+    productId,
     productImage0,
     productImage1,
     productImage2,
@@ -42,12 +46,16 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
     TProductImage | undefined,
   ] = [productImage0, productImage1, productImage2, productImage3];
 
+  const router = useRouter();
+
   const Description = convertRichTextToReactComponent(ProductDescription, productDescription);
 
   const quantityOptionsArray: string[] = Array.from(
     { length: productAvailableQuantity },
     (_, index: number) => String(index + 1),
   );
+
+  const goToProductPage = (): Promise<boolean> => router.push(`products/${productId}`);
 
   return (
     <ProductContainer>
@@ -60,9 +68,11 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
         <ProductDetailsSection>
           {Description}
 
-          {!isOnHomepage && (
+          {isOnHomepage ? (
+            <ProductSeeProductButton onClick={goToProductPage}>See product</ProductSeeProductButton>
+          ) : (
             <>
-              <ProductInputSection>
+              <ProductDetailsSectionRow>
                 <ProductInputLabel htmlFor="size">
                   Size:
                   <ProductInputSelect>
@@ -73,9 +83,10 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
                     ))}
                   </ProductInputSelect>
                 </ProductInputLabel>
-              </ProductInputSection>
+                <ProductGenericButton onClick={(): void => {}}>Add to cart</ProductGenericButton>
+              </ProductDetailsSectionRow>
 
-              <ProductInputSection>
+              <ProductDetailsSectionRow>
                 <ProductInputLabel htmlFor="quantity">
                   Quantity:
                   <ProductInputSelect>
@@ -86,7 +97,8 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
                     ))}
                   </ProductInputSelect>
                 </ProductInputLabel>
-              </ProductInputSection>
+                <ProductGenericButton onClick={(): void => {}}>Buy now</ProductGenericButton>
+              </ProductDetailsSectionRow>
             </>
           )}
         </ProductDetailsSection>

@@ -6,7 +6,6 @@ import getPageData from '@clients/contentful/getPageData';
 import mapData, { getProductOnHomepage } from '@clients/contentful/dataMapper';
 import { IProductProps, IPageData, TProduct, IProduct } from '@customTypes/product';
 import Product from '@generic/Product';
-import GenericButton from '@generic/buttons/GenericButton';
 
 export async function getServerSideProps(): Promise<IProduct> {
   const resJson = await getPageData();
@@ -26,7 +25,6 @@ export async function getServerSideProps(): Promise<IProduct> {
 export default function Homeapage({ pageData: { product } }: IProductProps): JSX.Element {
   return (
     <>
-      <GenericButton onClick={(): void => {}}>Add to cart</GenericButton>
       <HomepageHero />
       <Product productData={product} isOnHomepage />
       <HomepageAboutUs />

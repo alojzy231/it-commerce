@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { Header2, Header3, Header4, Header5 } from '@styles/typography';
+import GenericButton from '@generic/buttons/GenericButton';
 
 export const ProductContainer = styled.article`
   margin: 6.4rem 1.6rem;
@@ -46,6 +47,16 @@ export const ProductNameOnHomepage = styled.h2`
     font-weight: bold;
   }
 `;
+export const ProductSeeProductButton = styled(GenericButton)`
+  margin-top: 2.4rem;
+  margin-left: auto;
+
+  display: block;
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    margin-top: 1.4rem;
+  }
+`;
 export const ProductDetailsSection = styled.div`
   width: 53rem;
   margin: 0 auto;
@@ -53,15 +64,27 @@ export const ProductDetailsSection = styled.div`
     width: 87%;
   }
 `;
+export const ProductDetailsSectionRow = styled.div`
+  margin-top: 2.4rem;
+
+  display: flex;
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    margin-top: 2rem;
+  }
+  @media (max-width: 420px) {
+    flex-direction: column;
+  }
+`;
 export const ProductDescription = styled.h4`
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     ${Header5};
   }
 `;
-export const ProductInputSection = styled.div`
-  margin-top: 2.4rem;
-  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
-    margin-top: 1rem;
+export const ProductGenericButton = styled(GenericButton)`
+  margin-left: auto;
+
+  @media (max-width: 420px) {
+    margin: 2rem auto 0;
   }
 `;
 export const ProductInputLabel = styled.label`
