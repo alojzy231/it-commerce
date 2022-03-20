@@ -27,6 +27,8 @@ export const ProductName = styled.h1`
     ${Header2};
   }
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    margin-bottom: 2.4rem;
+
     ${Header4};
     font-weight: bold;
   }
@@ -48,9 +50,6 @@ export const ProductDetailsSection = styled.div`
   width: 53rem;
   margin: 0 auto;
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
-    margin-top: 3.2rem;
-  }
-  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     width: 87%;
   }
 `;
@@ -61,6 +60,9 @@ export const ProductDescription = styled.h4`
 `;
 export const ProductInputSection = styled.div`
   margin-top: 2.4rem;
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    margin-top: 1rem;
+  }
 `;
 export const ProductInputLabel = styled.label`
   ${Header4};
