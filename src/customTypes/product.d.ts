@@ -1,3 +1,8 @@
+export type TProductImage = {
+  title: string;
+  url: string;
+};
+
 export enum EAvailableSizes {
   XS,
   S,
@@ -8,10 +13,15 @@ export enum EAvailableSizes {
 }
 
 export type TProduct = {
+  productImage0: TProductImage;
+  productImage1?: TProductImage;
+  productImage2?: TProductImage;
+  productImage3?: TProductImage;
   productName: string;
   productDescription: string;
   productPrice: number;
-  availableSizes: EAvailableSizes[];
+  productAvailableSizes: EAvailableSizes[];
+  productAvailableQuantity: number;
   images: [];
 };
 export interface IPageData {
@@ -19,7 +29,7 @@ export interface IPageData {
 }
 export interface IProductProps {
   pageData: {
-    product: TProduct | null;
+    product: TProduct;
   };
 }
 export interface IProduct {

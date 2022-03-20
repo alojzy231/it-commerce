@@ -3,6 +3,7 @@ import React from 'react';
 import getPageData from '@clients/contentful/getPageData';
 import mapData, { getProductById } from '@clients/contentful/dataMapper';
 import { IPageData, IProductProps, IProduct, TProduct } from '@customTypes/product';
+import Product from '@generic/Product';
 
 interface IProductContext {
   query: {
@@ -27,6 +28,6 @@ export async function getServerSideProps(context: IProductContext): Promise<IPro
   };
 }
 
-export default function Product({ pageData: { product } }: IProductProps): JSX.Element {
-  return <div>{product?.productName}</div>;
+export default function ProductPage({ pageData: { product } }: IProductProps): JSX.Element {
+  return <Product productData={product} />;
 }
