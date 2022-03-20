@@ -65,6 +65,13 @@ export const ProductInputSelect = styled.select`
   border-radius: 2.4rem;
   border-color: ${({ theme: { colors } }): string => colors.secondary};
 
+  &:hover {
+    color: ${({ theme: { colors } }): string => colors.selected};
+    border-color: ${({ theme: { colors } }): string => colors.selected};
+
+    cursor: pointer;
+  }
+
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     ${Header5};
   }
