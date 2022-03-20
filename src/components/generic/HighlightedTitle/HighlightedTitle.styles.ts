@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const HighlightedTitleContainer = styled.div`
-  width: fit-content;
+  width: max-content;
   height: auto;
 
   position: relative;

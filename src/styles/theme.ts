@@ -35,12 +35,14 @@ export const colors: IColors = {
 interface IMedias {
   desktop: string;
   tablet: string;
+  bigMobile: string;
   mobile: string;
 }
 
 export const medias: IMedias = {
   desktop: '1440px',
   tablet: '1200px',
+  bigMobile: '800px',
   mobile: '690px',
 };
 
