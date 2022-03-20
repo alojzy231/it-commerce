@@ -4,6 +4,7 @@ import { Header5 } from '@styles/typography';
 
 export const GenericButtonContainer = styled.button`
   padding: 0.4rem 2rem;
+
   box-shadow: inset 0px 4px 0px rgba(255, 255, 255, 0.25);
 
   border: none;
