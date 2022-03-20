@@ -70,7 +70,7 @@ export const HomepageAboutUsTextCompanyName = styled.span`
   white-space: nowrap;
 `;
 export const HomepageAboutUsImage = styled.img`
-  width: 54rem;
+  width: 40%;
 
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     width: 80%;
