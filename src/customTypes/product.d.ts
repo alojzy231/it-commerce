@@ -1,3 +1,9 @@
+export interface IProductContext {
+  query: {
+    productId: string;
+  };
+}
+
 export type TProductImage = {
   title: string;
   url: string;

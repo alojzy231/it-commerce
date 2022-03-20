@@ -2,14 +2,14 @@ import React from 'react';
 
 import getPageData from '@clients/contentful/getPageData';
 import mapData, { getProductById } from '@clients/contentful/dataMapper';
-import { IPageData, IProductProps, IProduct, TProduct } from '@customTypes/product';
+import {
+  IProductContext,
+  IPageData,
+  IProductProps,
+  IProduct,
+  TProduct,
+} from '@customTypes/product';
 import Product from '@generic/Product';
-
-interface IProductContext {
-  query: {
-    productId: string;
-  };
-}
 
 export async function getServerSideProps(context: IProductContext): Promise<IProduct> {
   const resJson = await getPageData();

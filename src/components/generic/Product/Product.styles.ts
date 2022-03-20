@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Header2, Header4, Header5 } from '@styles/typography';
+import { Header2, Header3, Header4, Header5 } from '@styles/typography';
 
 export const ProductContainer = styled.article`
   margin: 6.4rem 1.6rem;
@@ -21,6 +21,8 @@ export const ProductContentSection = styled.div`
   }
 `;
 export const ProductName = styled.h1`
+  margin-bottom: 6.4rem;
+
   @media (max-width: ${({ theme: { medias } }): string => medias.bigMobile}) {
     ${Header2};
   }
@@ -29,10 +31,22 @@ export const ProductName = styled.h1`
     font-weight: bold;
   }
 `;
+export const ProductNameOnHomepage = styled.h2`
+  width: 53rem;
+  margin: 0 auto;
+  @media (max-width: ${({ theme: { medias } }): string => medias.bigMobile}) {
+    ${Header3};
+  }
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    width: 87%;
+
+    ${Header5};
+    font-weight: bold;
+  }
+`;
 export const ProductDetailsSection = styled.div`
   width: 53rem;
-
-  margin: 6.4rem auto 0;
+  margin: 0 auto;
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     margin-top: 3.2rem;
   }

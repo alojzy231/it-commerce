@@ -8,6 +8,7 @@ import {
   ProductContainer,
   ProductContentSection,
   ProductName,
+  ProductNameOnHomepage,
   ProductDescription,
   ProductDetailsSection,
   ProductInputSection,
@@ -19,9 +20,10 @@ import ProductImages from './ProductImages';
 
 interface IProduct {
   productData: TProduct;
+  isOnHomepage?: boolean;
 }
 
-export default function Product({ productData }: IProduct): JSX.Element {
+export default function Product({ productData, isOnHomepage }: IProduct): JSX.Element {
   const {
     productImage0,
     productImage1,
@@ -52,38 +54,47 @@ export default function Product({ productData }: IProduct): JSX.Element {
       <ProductImages productImagesData={productImages} />
       <ProductContentSection>
         <HighlightedTitle>
-          <ProductName>{productName}</ProductName>
+          <ProductName>{isOnHomepage ? 'Check this out' : productName}</ProductName>
         </HighlightedTitle>
+        {isOnHomepage && <ProductNameOnHomepage>{productName}</ProductNameOnHomepage>}
         <ProductDetailsSection>
           {Description}
 
-          <ProductInputSection>
-            <ProductInputLabel htmlFor="size">
-              Size:
-              <ProductInputSelect>
-                {productAvailableSizes.map((productAvailableSize) => (
-                  <ProductInputSelectOption key={productAvailableSize}>
-                    {productAvailableSize}
-                  </ProductInputSelectOption>
-                ))}
-              </ProductInputSelect>
-            </ProductInputLabel>
-          </ProductInputSection>
+          {!isOnHomepage && (
+            <>
+              <ProductInputSection>
+                <ProductInputLabel htmlFor="size">
+                  Size:
+                  <ProductInputSelect>
+                    {productAvailableSizes.map((productAvailableSize) => (
+                      <ProductInputSelectOption key={productAvailableSize}>
+                        {productAvailableSize}
+                      </ProductInputSelectOption>
+                    ))}
+                  </ProductInputSelect>
+                </ProductInputLabel>
+              </ProductInputSection>
 
-          <ProductInputSection>
-            <ProductInputLabel htmlFor="quantity">
-              Quantity:
-              <ProductInputSelect>
-                {quantityOptionsArray.map((quantityNumber) => (
-                  <ProductInputSelectOption key={quantityNumber}>
-                    {quantityNumber}
-                  </ProductInputSelectOption>
-                ))}
-              </ProductInputSelect>
-            </ProductInputLabel>
-          </ProductInputSection>
+              <ProductInputSection>
+                <ProductInputLabel htmlFor="quantity">
+                  Quantity:
+                  <ProductInputSelect>
+                    {quantityOptionsArray.map((quantityNumber) => (
+                      <ProductInputSelectOption key={quantityNumber}>
+                        {quantityNumber}
+                      </ProductInputSelectOption>
+                    ))}
+                  </ProductInputSelect>
+                </ProductInputLabel>
+              </ProductInputSection>
+            </>
+          )}
         </ProductDetailsSection>
       </ProductContentSection>
     </ProductContainer>
   );
 }
+
+Product.defaultProps = {
+  isOnHomepage: false,
+};

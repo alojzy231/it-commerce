@@ -75,6 +75,10 @@ export function getProductById(productsArray, desiredProductId) {
   return productsArray.find((product) => product.productId == desiredProductId) || null;
 }
 
+export function getProductOnHomepage(productsArray) {
+  return productsArray.find((product) => product.productIsOnHomepage);
+}
+
 export default function mapData(data) {
   const itemCollection = extractItems(data);
   const mappedCollection = mapItemsCollection(itemCollection);
