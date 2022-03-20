@@ -84,7 +84,7 @@ export const ProductGenericButton = styled(GenericButton)`
   margin-left: auto;
 
   @media (max-width: 420px) {
-    margin: 2rem auto 0;
+    margin: 2rem 0 0 auto;
   }
 `;
 export const ProductInputLabel = styled.label`
