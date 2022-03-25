@@ -51,8 +51,6 @@ export const ProductSeeProductButton = styled(GenericButton)`
   margin-top: 2.4rem;
   margin-left: auto;
 
-  display: block;
-
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     margin-top: 1.4rem;
   }
