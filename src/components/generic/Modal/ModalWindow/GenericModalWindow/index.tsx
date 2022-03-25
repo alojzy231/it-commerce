@@ -13,15 +13,16 @@ import {
 
 interface IGenericModalWindow {
   children: React.ReactChild | React.ReactChild[];
+  ref: () => void;
 }
 
-export default function GenericModalWindow({ children }: IGenericModalWindow): JSX.Element {
+export default function GenericModalWindow({ children, ref }: IGenericModalWindow): JSX.Element {
   const dispatch = useDispatch();
 
   const handleCloseModal = (): ICloseModalAction => dispatch(closeModal());
 
   return (
-    <GenericModalWindowContainer>
+    <GenericModalWindowContainer ref={ref}>
       <GenericModalWindowHeader>
         <GenericModalWindowHeaderTitle>Disclaimer</GenericModalWindowHeaderTitle>
         <CloseButton onClick={handleCloseModal} />
