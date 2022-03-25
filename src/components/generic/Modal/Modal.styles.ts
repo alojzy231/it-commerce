@@ -15,7 +15,7 @@ export const ModalContainer = styled.div`
   overflow-y: scroll;
 `;
 export const ModalBackground = styled.button`
-  width: 98vw;
+  width: calc(100vw - 0.9%);
   height: 100%;
 
   position: fixed;
