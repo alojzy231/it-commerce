@@ -46,14 +46,16 @@ export const medias: IMedias = {
   mobile: '690px',
 };
 
-interface ITheme extends DefaultTheme {
+export interface ITheme extends DefaultTheme {
   colors: IColors;
   medias: IMedias;
+  hideOverflowOnBody: boolean;
 }
 
 const theme: ITheme = {
   colors,
   medias,
+  hideOverflowOnBody: false,
 };
 
 export default theme;

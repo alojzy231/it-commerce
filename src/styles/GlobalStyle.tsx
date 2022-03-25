@@ -1,8 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { ITheme } from './theme';
 import { Header1, Header2, Header3, Header4, Header5, Header6, ParagraphBig } from './typography';
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle<{ theme: ITheme }>`
     :root {
         font-size: 62.5%;
     }
@@ -15,6 +16,9 @@ const GlobalStyle = createGlobalStyle`
 
     body{
         font-family: 'Segoe UI' , sans-serif;
+
+        overflow: ${({ theme: { hideOverflowOnBody } }): string =>
+          hideOverflowOnBody ? 'hidden' : 'auto'} !important;
     }
 
     h1{
