@@ -1,17 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { RootState } from '@redux/reducers';
+import { TRootState } from '@redux/reducers';
 import { closeModal, ICloseModalAction } from '@redux/actions/modalActions';
 
-import DisclaimerModalWindow from './ModalWindow/DisclaimerModalWindow';
+import ModalWindow from './ModalWindow';
 import ModalWrapper from './Modal.styles';
 
 export default function Modal(): JSX.Element | null {
   const modalRef = useRef(null);
 
   const dispatch = useDispatch();
-  const { isOpened } = useSelector((state: RootState) => state.modal);
+  const { isOpened, modalType } = useSelector((state: TRootState) => state.modal);
 
   const handleCloseModal = (): ICloseModalAction => dispatch(closeModal());
 
@@ -29,7 +29,7 @@ export default function Modal(): JSX.Element | null {
   if (isOpened) {
     return (
       <ModalWrapper ref={modalRef}>
-        <DisclaimerModalWindow handleCloseModal={handleCloseModal} />
+        <ModalWindow modalType={modalType} handleCloseModal={handleCloseModal} />
       </ModalWrapper>
     );
   }

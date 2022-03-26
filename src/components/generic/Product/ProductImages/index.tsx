@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { TProductImage } from '@customTypes/product';
+import { IOpenModalAction, openModal } from '@redux/actions/modalActions';
 
 import {
   ProductImagesContainer,
@@ -20,6 +22,8 @@ interface IProductImages {
 }
 
 export default function ProductImages({ productImagesData }: IProductImages): JSX.Element {
+  const dispatch = useDispatch();
+
   const [productImagesArray, setProductImagesArray] =
     useState<
       [
@@ -29,6 +33,9 @@ export default function ProductImages({ productImagesData }: IProductImages): JS
         TProductImage | undefined,
       ]
     >(productImagesData);
+
+  const handleImageMagnifying = (): IOpenModalAction =>
+    dispatch(openModal('magnifyImage', productImagesArray[0]));
 
   const changeMainImage = (index: number): void => {
     setProductImagesArray(
@@ -57,7 +64,11 @@ export default function ProductImages({ productImagesData }: IProductImages): JS
 
   return (
     <ProductImagesContainer>
-      <ProductImagesMainImage src={productImagesArray[0].url} alt={productImagesArray[0].title} />
+      <ProductImagesMainImage
+        src={productImagesArray[0].url}
+        alt={productImagesArray[0].title}
+        onClick={handleImageMagnifying}
+      />
 
       <ProductImagesSmallImagesContainer>
         {productImagesArray[1] ? (

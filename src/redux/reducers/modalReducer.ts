@@ -1,3 +1,4 @@
+import TModalType from '@customTypes/modal';
 import {
   CLOSE_MODAL,
   ICloseModalAction,
@@ -7,11 +8,16 @@ import {
 
 interface IState {
   isOpened: boolean;
-  modalType?: string;
+  modalType: TModalType;
+  image?: {
+    url: string;
+    title: string;
+  };
 }
 
 const initialState: IState = {
   isOpened: false,
+  modalType: 'disclaimer',
 };
 
 const isMobileReducer = (

@@ -20,5 +20,3 @@ export const DisclaimerModalWindowText = styled.h5`
 export const DisclaimerModalWindowButton = styled(GenericButton)`
   margin-left: auto;
 `;
-
-export default DisclaimerModalWindowTitle;
