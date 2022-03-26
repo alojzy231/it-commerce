@@ -12,10 +12,11 @@ import {
 } from './GenericModalWindow.styles';
 
 interface IGenericModalWindow {
+  title: string;
   children: React.ReactChild | React.ReactChild[];
 }
 
-export default function GenericModalWindow({ children }: IGenericModalWindow): JSX.Element {
+export default function GenericModalWindow({ title, children }: IGenericModalWindow): JSX.Element {
   const dispatch = useDispatch();
 
   const handleCloseModal = (): ICloseModalAction => dispatch(closeModal());
@@ -23,7 +24,7 @@ export default function GenericModalWindow({ children }: IGenericModalWindow): J
   return (
     <GenericModalWindowContainer>
       <GenericModalWindowHeader>
-        <GenericModalWindowHeaderTitle>Disclaimer</GenericModalWindowHeaderTitle>
+        <GenericModalWindowHeaderTitle>{title}</GenericModalWindowHeaderTitle>
         <CloseButton onClick={handleCloseModal} />
       </GenericModalWindowHeader>
       <GenericModalWindowContentContainer>{children}</GenericModalWindowContentContainer>

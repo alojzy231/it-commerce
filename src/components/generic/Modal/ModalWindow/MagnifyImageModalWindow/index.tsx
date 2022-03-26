@@ -7,7 +7,7 @@ import GenericModalWindow from '../GenericModalWindow';
 
 import {
   MagnifyImageModalWindowImage,
-  DisclaimerModalWindowButton,
+  MagnifyImageModalWindowButton,
 } from './MagnifyImageModalWindow.styles';
 
 interface IMagnifyImageModalWindow {
@@ -20,9 +20,9 @@ export default function DisclaimerModalWindow({
   const { image } = useSelector((state: TRootState) => state.modal);
 
   return (
-    <GenericModalWindow>
+    <GenericModalWindow title="Product">
       <MagnifyImageModalWindowImage src={image?.url} alt={image?.title} />
-      <DisclaimerModalWindowButton onClick={handleCloseModal}>OK</DisclaimerModalWindowButton>
+      <MagnifyImageModalWindowButton onClick={handleCloseModal}>OK</MagnifyImageModalWindowButton>
     </GenericModalWindow>
   );
 }

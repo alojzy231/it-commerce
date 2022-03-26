@@ -6,6 +6,6 @@ export const MagnifyImageModalWindowImage = styled.img`
   width: 100%;
 `;
 
-export const DisclaimerModalWindowButton = styled(GenericButton)`
+export const MagnifyImageModalWindowButton = styled(GenericButton)`
   margin: 2rem 0 0 auto;
 `;

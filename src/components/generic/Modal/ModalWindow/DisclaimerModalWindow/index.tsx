@@ -16,7 +16,7 @@ export default function DisclaimerModalWindow({
   handleCloseModal,
 }: IDisclaimerModalWindow): JSX.Element {
   return (
-    <GenericModalWindow>
+    <GenericModalWindow title="Disclaimer">
       <DisclaimerModalWindowTitle>Information</DisclaimerModalWindowTitle>
       <DisclaimerModalWindowText>
         All images come from the Internet and their source addresses are included in their alt
