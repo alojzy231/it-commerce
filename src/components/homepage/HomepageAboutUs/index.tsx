@@ -39,7 +39,10 @@ export default function HomepageAboutUs(): JSX.Element {
           </HomepageAboutUsTextParagraph>
         </HomepageAboutUsText>
       </HomepageAboutUsTextContent>
-      <HomepageAboutUsImage src={photo.src} alt="Our crew" />
+      <HomepageAboutUsImage
+        src={photo.src}
+        alt="https://www.kindpng.com/picc/b/175-1751395_peoples-png.png"
+      />
     </HomepageAboutUsContainer>
   );
 }
