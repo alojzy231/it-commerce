@@ -3,6 +3,10 @@ import styled from 'styled-components';
 import { Header2, Header3, Header4, Header5 } from '@styles/typography';
 import GenericButton from '@generic/buttons/GenericButton';
 
+interface IProductPrice {
+  productIsOnSale: boolean;
+}
+
 export const ProductContainer = styled.article`
   margin: 6.4rem 1.6rem;
 
@@ -55,11 +59,42 @@ export const ProductSeeProductButton = styled(GenericButton)`
     margin-top: 1.4rem;
   }
 `;
+
+export const ProductPrice = styled.h3<IProductPrice>`
+  margin-left: ${({ productIsOnSale }): string => (productIsOnSale ? '2rem' : 'auto')};
+
+  color: ${({ theme: { colors }, productIsOnSale }): string =>
+    productIsOnSale ? colors.selected : colors.secondary};
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    ${Header4};
+  }
+`;
+export const ProductOldPrice = styled.h4`
+  margin: auto 0 auto auto;
+
+  text-decoration: line-through;
+
+  color: ${({ theme: { colors } }): string => colors.secondary};
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    ${Header5};
+  }
+`;
+
 export const ProductDetailsSection = styled.div`
   width: 53rem;
   margin: 0 auto;
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     width: 87%;
+  }
+`;
+export const ProductDetailsPriceRow = styled.div`
+  margin-top: 2.4rem;
+
+  display: flex;
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    margin-top: 2rem;
   }
 `;
 export const ProductDetailsSectionRow = styled.div`
@@ -82,7 +117,7 @@ export const ProductGenericButton = styled(GenericButton)`
   margin-left: auto;
 
   @media (max-width: 420px) {
-    margin: 2rem 0 0 auto;
+    margin: 2rem auto 0 auto;
   }
 `;
 export const ProductInputLabel = styled.label`

@@ -26,7 +26,10 @@ export type TProduct = {
   productImage3?: TProductImage;
   productName: string;
   productDescription: string;
+  productIsOnSale: boolean;
   productPrice: number;
+  productOldPrice: number;
+  productAvailableColors: string[];
   productAvailableSizes: EAvailableSizes[];
   productAvailableQuantity: number;
   images: [];
