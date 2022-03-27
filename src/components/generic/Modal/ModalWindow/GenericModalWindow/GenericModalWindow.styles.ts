@@ -23,7 +23,7 @@ export const GenericModalWindowContainer = styled.div`
   position: relative;
   z-index: 1;
 
-  animation: ${slideInAnimation} 0.6s ease-out;
+  animation: ${slideInAnimation} 0.3s ease-out;
 
   border-radius: 3rem 3rem 0 0;
 `;
