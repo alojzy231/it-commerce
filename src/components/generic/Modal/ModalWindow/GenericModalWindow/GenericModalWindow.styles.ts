@@ -1,6 +1,18 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import { Header5 } from '@styles/typography';
+
+const slideInAnimation = keyframes`
+  0%{
+  transform: translateY(-100%);
+
+  }
+
+  100%{
+      transform: translateY(0%);
+
+  }
+`;
 
 export const GenericModalWindowContainer = styled.div`
   max-width: 88rem;
@@ -10,6 +22,8 @@ export const GenericModalWindowContainer = styled.div`
 
   position: relative;
   z-index: 1;
+
+  animation: ${slideInAnimation} 0.6s ease-out;
 
   border-radius: 3rem 3rem 0 0;
 `;
