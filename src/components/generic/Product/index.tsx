@@ -53,8 +53,6 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
     TProductImage | undefined,
   ] = [productImage0, productImage1, productImage2, productImage3];
 
-  console.log(productData);
-
   const router = useRouter();
 
   const price = `${productPrice.toFixed(2)}$`;
