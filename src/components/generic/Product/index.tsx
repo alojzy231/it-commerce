@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 
+import { convertRichTextToReactComponent } from '@clients/contentful/dataMapper';
 import { TProductImage, TProduct } from '@customTypes/product';
 import HighlightedTitle from '@generic/HighlightedTitle';
-import { convertRichTextToReactComponent } from '@clients/contentful/dataMapper';
+import GenericButton from '@generic/buttons/GenericButton';
 
 import {
   ProductContainer,
@@ -55,8 +56,6 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
 
   const [productQuantity, setProductQuantity] = useState<number>(1);
 
-  const router = useRouter();
-
   const price = `${productPrice.toFixed(2)}$`;
 
   const oldPrice = productIsOnSale ? `${productOldPrice.toFixed(2)}$` : null;
@@ -72,8 +71,6 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
       setProductQuantity(quantity);
     }
   };
-
-  const goToProductPage = (): Promise<boolean> => router.push(`products/${productId}`);
 
   return (
     <ProductContainer>
@@ -91,7 +88,11 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
             <ProductPrice productIsOnSale={productIsOnSale}>{price}</ProductPrice>
           </ProductDetailsPriceRow>
           {isOnHomepage ? (
-            <ProductSeeProductButton onClick={goToProductPage}>See product</ProductSeeProductButton>
+            <Link href={`products/${productId}`} passHref>
+              <ProductSeeProductButton>
+                <GenericButton>See product</GenericButton>
+              </ProductSeeProductButton>
+            </Link>
           ) : (
             <>
               <ProductDetailsSectionRow>

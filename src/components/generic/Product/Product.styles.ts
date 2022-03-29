@@ -51,9 +51,15 @@ export const ProductNameOnHomepage = styled.h2`
     font-weight: bold;
   }
 `;
-export const ProductSeeProductButton = styled(GenericButton)`
+export const ProductSeeProductButton = styled.a`
+  width: fit-content;
+
   margin-top: 2.4rem;
   margin-left: auto;
+
+  display: block;
+
+  text-decoration: none;
 
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     margin-top: 1.4rem;
