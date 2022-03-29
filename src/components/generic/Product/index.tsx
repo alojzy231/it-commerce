@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { TProductImage, TProduct } from '@customTypes/product';
@@ -21,6 +21,7 @@ import {
   ProductPrice,
   ProductOldPrice,
   ProductDetailsPriceRow,
+  ProductInputQuantityNumber,
 } from './Product.styles';
 import ProductImages from './ProductImages';
 
@@ -43,7 +44,6 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
     productOldPrice,
     productAvailableColors,
     productAvailableSizes,
-    productAvailableQuantity,
   }: TProduct = productData;
 
   const productImages: [
@@ -53,6 +53,8 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
     TProductImage | undefined,
   ] = [productImage0, productImage1, productImage2, productImage3];
 
+  const [productQuantity, setProductQuantity] = useState<number>(1);
+
   const router = useRouter();
 
   const price = `${productPrice.toFixed(2)}$`;
@@ -61,10 +63,15 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
 
   const Description = convertRichTextToReactComponent(ProductDescription, productDescription);
 
-  const quantityOptionsArray: string[] = Array.from(
-    { length: productAvailableQuantity },
-    (_, index: number) => String(index + 1),
-  );
+  const handleProductQuantityChange = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLInputElement>): void => {
+    const quantity: number = parseInt(value, 10);
+
+    if (quantity > 0 || !quantity) {
+      setProductQuantity(quantity);
+    }
+  };
 
   const goToProductPage = (): Promise<boolean> => router.push(`products/${productId}`);
 
@@ -117,13 +124,10 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
               <ProductDetailsSectionRow>
                 <ProductInputLabel htmlFor="quantity">
                   Quantity:
-                  <ProductInputSelect>
-                    {quantityOptionsArray.map((quantityNumber) => (
-                      <ProductInputSelectOption key={quantityNumber}>
-                        {quantityNumber}
-                      </ProductInputSelectOption>
-                    ))}
-                  </ProductInputSelect>
+                  <ProductInputQuantityNumber
+                    value={productQuantity}
+                    onChange={handleProductQuantityChange}
+                  />
                 </ProductInputLabel>
                 <ProductGenericButton onClick={(): void => {}}>Buy now</ProductGenericButton>
               </ProductDetailsSectionRow>

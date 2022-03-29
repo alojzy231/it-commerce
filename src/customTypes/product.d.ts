@@ -31,7 +31,6 @@ export type TProduct = {
   productOldPrice: number;
   productAvailableColors: string[];
   productAvailableSizes: EAvailableSizes[];
-  productAvailableQuantity: number;
   images: [];
 };
 export interface IPageData {

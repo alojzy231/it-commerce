@@ -126,13 +126,44 @@ export const ProductInputLabel = styled.label`
     ${Header5};
   }
 `;
-export const ProductInputSelect = styled.select`
+export const ProductInputSelect = styled.select.attrs({
+  required: true,
+})`
   padding: 0 2rem;
   margin-left: 1.6rem;
 
   ${Header4};
 
   color: ${({ theme: { colors } }): string => colors.secondary};
+
+  border-radius: 2.4rem;
+  border-color: ${({ theme: { colors } }): string => colors.secondary};
+
+  &:hover {
+    color: ${({ theme: { colors } }): string => colors.selected};
+    border-color: ${({ theme: { colors } }): string => colors.selected};
+
+    cursor: pointer;
+  }
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    ${Header5};
+  }
+`;
+export const ProductInputQuantityNumber = styled.input.attrs({
+  type: 'number',
+  required: true,
+})`
+  width: 10.2rem;
+
+  padding: 0 2rem;
+  margin-left: 1.6rem;
+
+  ${Header4};
+
+  color: ${({ theme: { colors } }): string => colors.secondary};
+
+  outline: none;
 
   border-radius: 2.4rem;
   border-color: ${({ theme: { colors } }): string => colors.secondary};
