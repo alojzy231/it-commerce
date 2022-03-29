@@ -26,7 +26,8 @@
       "@clients/*": ["./src/clients/*"],
       "@customTypes/*": ["./src/customTypes/*"],
       "@generic/*": ["./src/components/generic/*"],
-      "@homepage/*": ["./src/components/homepage/*"]
+      "@homepage/*": ["./src/components/homepage/*"],
+      "@productsPage/*": ["./src/components/productsPage/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

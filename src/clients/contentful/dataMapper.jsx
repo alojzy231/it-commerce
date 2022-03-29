@@ -78,6 +78,20 @@ export function getProductById(productsArray, desiredProductId) {
 export function getProductOnHomepage(productsArray) {
   return productsArray.find((product) => product.productIsOnHomepage);
 }
+export function sortDataForProductsPage(productsArray) {
+  return productsArray.map(
+    ({ productId, productName, productImage0, productImage1, productImage2, productImage3 }) => ({
+      productId,
+      productName,
+      productImages: [
+        productImage0,
+        productImage1 || null,
+        productImage2 || null,
+        productImage3 || null,
+      ],
+    }),
+  );
+}
 
 export default function mapData(data) {
   const itemCollection = extractItems(data);
