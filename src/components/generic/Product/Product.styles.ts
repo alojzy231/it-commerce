@@ -69,11 +69,14 @@ export const ProductSeeProductButton = styled.a`
 export const ProductPrice = styled.h3<IProductPrice>`
   margin-left: ${({ productIsOnSale }): string => (productIsOnSale ? '2rem' : 'auto')};
 
+  font-weight: 500;
+
   color: ${({ theme: { colors }, productIsOnSale }): string =>
     productIsOnSale ? colors.selected : colors.secondary};
 
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     ${Header4};
+    font-weight: 500;
   }
 `;
 export const ProductOldPrice = styled.h4`

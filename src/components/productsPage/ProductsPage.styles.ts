@@ -106,5 +106,6 @@ export const ProductsPageProductPrice = styled.h4<IProductPrice>`
 
   @media (max-width: ${({ theme: { medias } }): string => medias.smallMobile}) {
     ${Header5};
+    font-weight: 500;
   }
 `;

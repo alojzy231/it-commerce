@@ -14,7 +14,7 @@ import {
   ProductsPageProductPriceRow,
   ProductsPageProductOldPrice,
   ProductsPageProductPrice,
-} from '@productsPage/Products.styles';
+} from '@productsPage/ProductsPage.styles';
 
 export async function getServerSideProps(): Promise<IProducts> {
   const resJson = await getPageData();
