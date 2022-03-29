@@ -5,7 +5,7 @@ import { GenericButtonContainer, GenericButtonText } from './GenericButton.style
 interface IGenericButton {
   className?: string;
   children: React.ReactChild;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function GenericButton({
@@ -22,4 +22,5 @@ export default function GenericButton({
 
 GenericButton.defaultProps = {
   className: '',
+  onClick: (): void => {},
 };
