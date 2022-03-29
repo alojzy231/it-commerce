@@ -126,20 +126,21 @@ export const ProductInputLabel = styled.label`
     ${Header5};
   }
 `;
-export const ProductInputSelect = styled.select.attrs({
-  required: true,
-})`
+export const ProductInputSelect = styled.select`
   padding: 0 2rem;
   margin-left: 1.6rem;
 
   ${Header4};
-
+  background-color: ${({ theme: { colors } }): string => colors.white};
   color: ${({ theme: { colors } }): string => colors.secondary};
 
   border: 0.1rem solid ${({ theme: { colors } }): string => colors.secondary};
   border-radius: 2.4rem;
 
-  &:hover {
+  &:hover,
+  &:active {
+    outline: none;
+
     color: ${({ theme: { colors } }): string => colors.selected};
     border-color: ${({ theme: { colors } }): string => colors.selected};
 
@@ -152,7 +153,6 @@ export const ProductInputSelect = styled.select.attrs({
 `;
 export const ProductInputQuantityNumber = styled.input.attrs({
   type: 'number',
-  required: true,
 })`
   width: 10.2rem;
 
@@ -166,7 +166,10 @@ export const ProductInputQuantityNumber = styled.input.attrs({
   border: 0.1rem solid ${({ theme: { colors } }): string => colors.secondary};
   border-radius: 2.4rem;
 
-  &:hover {
+  &:hover,
+  &:active {
+    outline: none;
+
     color: ${({ theme: { colors } }): string => colors.selected};
     border-color: ${({ theme: { colors } }): string => colors.selected};
 
