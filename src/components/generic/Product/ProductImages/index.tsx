@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { TProductImage } from '@customTypes/product';
-import { IOpenModalAction, openModal } from '@redux/actions/modalActions';
+import { TProductImage, TProductImages } from '@customTypes/product';
+import { openModal } from '@redux/actions/modalActions';
 
 import {
   ProductImagesContainer,
@@ -13,69 +13,53 @@ import {
 } from './ProductImages.styles';
 
 interface IProductImages {
-  productImagesData: [
-    TProductImage,
-    TProductImage | undefined,
-    TProductImage | undefined,
-    TProductImage | undefined,
-  ];
+  productImagesData: TProductImages;
+  isOnProductsPage?: boolean;
 }
 
-export default function ProductImages({ productImagesData }: IProductImages): JSX.Element {
+export default function ProductImages({
+  productImagesData,
+  isOnProductsPage,
+}: IProductImages): JSX.Element {
   const dispatch = useDispatch();
 
-  const [productImagesArray, setProductImagesArray] =
-    useState<
-      [
-        TProductImage,
-        TProductImage | undefined,
-        TProductImage | undefined,
-        TProductImage | undefined,
-      ]
-    >(productImagesData);
+  const [productImagesArray, setProductImagesArray] = useState<TProductImages>(productImagesData);
 
-  const handleImageMagnifying = (): IOpenModalAction =>
-    dispatch(openModal('magnifyImage', productImagesArray[0]));
+  const handleImageMagnifying = (): void => {
+    if (!isOnProductsPage) {
+      dispatch(openModal('magnifyImage', productImagesArray[0]));
+    }
+  };
 
   const changeMainImage = (index: number): void => {
-    setProductImagesArray(
-      (
-        prevImagesArray,
-      ): [
-        TProductImage,
-        TProductImage | undefined,
-        TProductImage | undefined,
-        TProductImage | undefined,
-      ] => {
-        const oldArray: [
-          TProductImage,
-          TProductImage | undefined,
-          TProductImage | undefined,
-          TProductImage | undefined,
-        ] = [...prevImagesArray];
+    if (!isOnProductsPage) {
+      setProductImagesArray((prevImagesArray): TProductImages => {
+        const oldArray: TProductImages = [...prevImagesArray];
         const newMainImage = oldArray[0];
         oldArray[0] = oldArray[index] as TProductImage;
         oldArray[index] = newMainImage;
 
         return [...oldArray];
-      },
-    );
+      });
+    }
   };
 
   return (
-    <ProductImagesContainer>
+    <ProductImagesContainer isOnProductsPage={isOnProductsPage}>
       <ProductImagesMainImage
         src={productImagesArray[0].url}
         alt={productImagesArray[0].title}
         onClick={handleImageMagnifying}
+        isOnProductsPage={isOnProductsPage}
       />
 
-      <ProductImagesSmallImagesContainer>
+      <ProductImagesSmallImagesContainer isOnProductsPage={isOnProductsPage}>
         {productImagesArray[1] ? (
           <ProductImagesSmallImage
             onClick={(): void => changeMainImage(1)}
             src={productImagesArray[1].url}
             alt={productImagesArray[1].title}
+            isOnProductsPage={isOnProductsPage}
           />
         ) : (
           <ProductImagesSmallImageFiller />
@@ -85,6 +69,7 @@ export default function ProductImages({ productImagesData }: IProductImages): JS
             onClick={(): void => changeMainImage(2)}
             src={productImagesArray[2].url}
             alt={productImagesArray[2].title}
+            isOnProductsPage={isOnProductsPage}
           />
         ) : (
           <ProductImagesSmallImageFiller />
@@ -94,6 +79,7 @@ export default function ProductImages({ productImagesData }: IProductImages): JS
             onClick={(): void => changeMainImage(3)}
             src={productImagesArray[3].url}
             alt={productImagesArray[3].title}
+            isOnProductsPage={isOnProductsPage}
           />
         ) : (
           <ProductImagesSmallImageFiller />
@@ -102,3 +88,7 @@ export default function ProductImages({ productImagesData }: IProductImages): JS
     </ProductImagesContainer>
   );
 }
+
+ProductImages.defaultProps = {
+  isOnProductsPage: false,
+};

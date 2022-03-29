@@ -9,6 +9,14 @@ export type TProductImage = {
   url: string;
 };
 
+export type TProductOptionalImage = TProductImage | null | undefined;
+export type TProductImages = [
+  TProductImage,
+  TProductOptionalImage,
+  TProductOptionalImage,
+  TProductOptionalImage,
+];
+
 export enum EAvailableSizes {
   XS,
   S,
@@ -43,4 +51,19 @@ export interface IProductProps {
 }
 export interface IProduct {
   props: IProductProps;
+}
+
+export type TProductOnProductsPage = {
+  productId: number;
+  productName: string;
+  productImages: TProductImages;
+};
+
+export interface IProductsProps {
+  pageData: {
+    products: TProductOnProductsPage[];
+  };
+}
+export interface IProducts {
+  props: IProductsProps;
 }

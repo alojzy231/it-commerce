@@ -8,13 +8,18 @@ import {
 
 interface IHighlightedTitle {
   children: React.ReactChild;
+  className?: string;
 }
 
-export default function HighlightedTitle({ children }: IHighlightedTitle): JSX.Element {
+export default function HighlightedTitle({ children, className }: IHighlightedTitle): JSX.Element {
   return (
-    <HighlightedTitleContainer>
+    <HighlightedTitleContainer className={className}>
       <HighlightTitleContent>{children}</HighlightTitleContent>
       <HighlightedTitleBackground />
     </HighlightedTitleContainer>
   );
 }
+
+HighlightedTitle.defaultProps = {
+  className: '',
+};

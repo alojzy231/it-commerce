@@ -1,18 +1,11 @@
-import styled from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 
-export const ProductImagesContainer = styled.div`
-  max-width: 55rem;
-  width: 100%;
-  margin: 0 3.2rem;
-`;
-export const ProductImagesMainImage = styled.img`
-  width: 100%;
+interface IProductImagesProps {
+  isOnProductsPage?: boolean;
+}
 
-  aspect-ratio: 1 / 1;
-
-  object-fit: cover;
-
-  cursor: zoom-in;
+const imageMouseInteractionsStyle = css`
+  cursor: pointer;
 
   &:hover {
     opacity: 0.8;
@@ -22,10 +15,26 @@ export const ProductImagesMainImage = styled.img`
     opacity: 0.6;
   }
 `;
-export const ProductImagesSmallImagesContainer = styled.div`
+
+export const ProductImagesContainer = styled.div<IProductImagesProps>`
+  max-width: 55rem;
+  width: 100%;
+  margin: ${({ isOnProductsPage }): string => (isOnProductsPage ? '0 0 1rem 0' : ' 0 3.2rem;')};
+`;
+export const ProductImagesMainImage = styled.img<IProductImagesProps>`
   width: 100%;
 
-  margin-top: 3.2rem;
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+
+  ${({ isOnProductsPage }): string | FlattenSimpleInterpolation =>
+    isOnProductsPage ? '' : imageMouseInteractionsStyle}
+`;
+export const ProductImagesSmallImagesContainer = styled.div<IProductImagesProps>`
+  width: 100%;
+
+  margin-top: ${({ isOnProductsPage }): string => (isOnProductsPage ? '3%' : '3.2rem')};
 
   display: flex;
   justify-content: space-between;
@@ -37,18 +46,11 @@ export const ProductImagesSmallImageFiller = styled.div`
 
   background-color: ${({ theme: { colors } }): string => colors.unloaded};
 `;
-export const ProductImagesSmallImage = styled.img`
+export const ProductImagesSmallImage = styled.img<IProductImagesProps>`
   width: 30%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
 
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:active {
-    opacity: 0.6;
-  }
+  ${({ isOnProductsPage }): string | FlattenSimpleInterpolation =>
+    isOnProductsPage ? '' : imageMouseInteractionsStyle}
 `;
