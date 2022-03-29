@@ -80,9 +80,22 @@ export function getProductOnHomepage(productsArray) {
 }
 export function sortDataForProductsPage(productsArray) {
   return productsArray.map(
-    ({ productId, productName, productImage0, productImage1, productImage2, productImage3 }) => ({
+    ({
       productId,
       productName,
+      productIsOnSale,
+      productPrice,
+      productOldPrice,
+      productImage0,
+      productImage1,
+      productImage2,
+      productImage3,
+    }) => ({
+      productId,
+      productName,
+      productIsOnSale,
+      productPrice,
+      productOldPrice: productOldPrice || null,
       productImages: [
         productImage0,
         productImage1 || null,

@@ -56,6 +56,9 @@ export interface IProduct {
 export type TProductOnProductsPage = {
   productId: number;
   productName: string;
+  productIsOnSale: boolean;
+  productPrice: number;
+  productOldPrice: number;
   productImages: TProductImages;
 };
 

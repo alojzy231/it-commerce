@@ -11,6 +11,9 @@ import {
   ProductsPageProductsContainer,
   ProductsPageProductWrapper,
   ProductsPageProductName,
+  ProductsPageProductPriceRow,
+  ProductsPageProductOldPrice,
+  ProductsPageProductPrice,
 } from '@productsPage/Products.styles';
 
 export async function getServerSideProps(): Promise<IProducts> {
@@ -34,14 +37,34 @@ export default function Products({ pageData: { products } }: IProductsProps): JS
         <ProductsPageTitleText>Products</ProductsPageTitleText>
       </ProductsPageHighlightedTitle>
       <ProductsPageProductsContainer>
-        {products.map(({ productId, productName, productImages }: TProductOnProductsPage) => (
-          <Link href={`./products/${productId}`} passHref>
-            <ProductsPageProductWrapper>
-              <ProductImages productImagesData={productImages} isOnProductsPage />
-              <ProductsPageProductName>{productName}</ProductsPageProductName>
-            </ProductsPageProductWrapper>
-          </Link>
-        ))}
+        {products.map(
+          ({
+            productId,
+            productName,
+            productIsOnSale,
+            productPrice,
+            productOldPrice,
+            productImages,
+          }: TProductOnProductsPage) => (
+            <Link href={`./products/${productId}`} passHref key={productName}>
+              <ProductsPageProductWrapper>
+                <ProductImages productImagesData={productImages} isOnProductsPage />
+                <ProductsPageProductName>{productName}</ProductsPageProductName>
+
+                <ProductsPageProductPriceRow>
+                  {productIsOnSale && (
+                    <ProductsPageProductOldPrice>{`${productOldPrice.toFixed(
+                      2,
+                    )}$`}</ProductsPageProductOldPrice>
+                  )}
+                  <ProductsPageProductPrice productIsOnSale={productIsOnSale}>
+                    {`${productPrice.toFixed(2)}$`}
+                  </ProductsPageProductPrice>
+                </ProductsPageProductPriceRow>
+              </ProductsPageProductWrapper>
+            </Link>
+          ),
+        )}
       </ProductsPageProductsContainer>
     </>
   );

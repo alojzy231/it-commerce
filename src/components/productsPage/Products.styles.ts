@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
 import HighlightedTitle from '@generic/HighlightedTitle';
-import { Header2, Header5 } from '@styles/typography';
+import { Header2, Header5, Header6 } from '@styles/typography';
+
+interface IProductPrice {
+  productIsOnSale: boolean;
+}
 
 export const ProductsPageHighlightedTitle = styled(HighlightedTitle)`
   margin: 6.4rem auto;
@@ -71,8 +75,36 @@ export const ProductsPageProductName = styled.h4`
   font-weight: bold;
   text-align: center;
 
-  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+  @media (max-width: ${({ theme: { medias } }): string => medias.smallMobile}) {
     ${Header5};
     font-weight: bold;
+  }
+`;
+
+export const ProductsPageProductPriceRow = styled.div`
+  display: flex;
+`;
+export const ProductsPageProductOldPrice = styled.h5`
+  margin: auto 2rem auto auto;
+
+  text-decoration: line-through;
+
+  color: ${({ theme: { colors } }): string => colors.secondary};
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.smallMobile}) {
+    ${Header6};
+    margin-right: 1rem;
+  }
+`;
+export const ProductsPageProductPrice = styled.h4<IProductPrice>`
+  margin-left: ${({ productIsOnSale }): string => (productIsOnSale ? '0' : 'auto')};
+
+  font-weight: 500;
+
+  color: ${({ theme: { colors }, productIsOnSale }): string =>
+    productIsOnSale ? colors.selected : colors.secondary};
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.smallMobile}) {
+    ${Header5};
   }
 `;

@@ -37,6 +37,7 @@ interface IMedias {
   tablet: string;
   bigMobile: string;
   mobile: string;
+  smallMobile: string;
 }
 
 export const medias: IMedias = {
@@ -44,6 +45,7 @@ export const medias: IMedias = {
   tablet: '1200px',
   bigMobile: '800px',
   mobile: '690px',
+  smallMobile: '440px',
 };
 
 export interface ITheme extends DefaultTheme {
