@@ -44,13 +44,16 @@ export type TProduct = {
 export interface IPageData {
   product?: TProduct[];
 }
-export interface IProductProps {
+export interface IProductPageProps {
   pageData: {
     product: TProduct;
   };
 }
-export interface IProduct {
+export interface IProductPageData {
   props: IProductProps;
+}
+export interface IProductNotFound {
+  notFound: boolean;
 }
 
 export type TProductOnProductsPage = {
