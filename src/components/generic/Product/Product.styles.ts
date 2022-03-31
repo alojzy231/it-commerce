@@ -26,6 +26,8 @@ export const ProductContentSection = styled.div`
   }
 `;
 export const ProductName = styled.h1`
+  max-width: 73.5rem;
+
   margin-bottom: 6.4rem;
 
   @media (max-width: ${({ theme: { medias } }): string => medias.bigMobile}) {
@@ -94,6 +96,9 @@ export const ProductOldPrice = styled.h4`
 export const ProductDetailsSection = styled.div`
   width: 53rem;
   margin: 0 auto;
+
+  position: relative;
+
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     width: 87%;
   }
