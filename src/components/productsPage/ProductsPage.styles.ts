@@ -22,22 +22,42 @@ export const ProductsPageTitleText = styled.h1`
     font-weight: bold;
   }
 `;
+
+export const ProductsPageContentWrapper = styled.div`
+  padding: 0 6.4rem;
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.tablet}) {
+    padding: 0 3.2rem;
+  }
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    padding: 0 1.2rem;
+  }
+`;
+
+export const ProductsPageSearchInputsContainer = styled.div`
+  width: fit-content;
+
+  margin: 6.4rem 0 calc(6.4rem - 5%) auto;
+
+  display: flex;
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    margin: 3.2rem auto calc(3.2rem - 5%);
+  }
+`;
+
 export const ProductsPageProductsContainer = styled.div`
   margin-bottom: 12.8rem;
-  padding: 0 6.4rem;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   /* overflow: hidden; */
 
   @media (max-width: ${({ theme: { medias } }): string => medias.tablet}) {
-    padding: 0 3.2rem;
-
     grid-template-columns: repeat(2, 1fr);
   }
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     margin-bottom: 6.4rem;
-    padding: 0 1.2rem;
 
     grid-template-columns: 1fr;
   }

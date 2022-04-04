@@ -151,12 +151,17 @@ export const ProductInputSelect = styled.select`
   border: 0.1rem solid ${({ theme: { colors } }): string => colors.secondary};
   border-radius: 2.4rem;
 
-  &:hover,
-  &:active {
+  &:hover {
     outline: none;
 
-    color: ${({ theme: { colors } }): string => colors.selected};
-    border-color: ${({ theme: { colors } }): string => colors.selected};
+    filter: brightness(1.1);
+
+    cursor: pointer;
+  }
+
+  &:active {
+    outline: none;
+    filter: brightness(1.3);
 
     cursor: pointer;
   }
@@ -180,12 +185,17 @@ export const ProductInputQuantityNumber = styled.input.attrs({
   border: 0.1rem solid ${({ theme: { colors } }): string => colors.secondary};
   border-radius: 2.4rem;
 
-  &:hover,
-  &:active {
+  &:hover {
     outline: none;
 
-    color: ${({ theme: { colors } }): string => colors.selected};
-    border-color: ${({ theme: { colors } }): string => colors.selected};
+    filter: brightness(1.1);
+
+    cursor: pointer;
+  }
+
+  &:active {
+    outline: none;
+    filter: brightness(1.3);
 
     cursor: pointer;
   }

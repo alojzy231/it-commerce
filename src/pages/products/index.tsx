@@ -8,13 +8,16 @@ import ProductImages from '@generic/Product/ProductImages';
 import {
   ProductsPageHighlightedTitle,
   ProductsPageTitleText,
+  ProductsPageSearchInputsContainer,
   ProductsPageProductsContainer,
   ProductsPageProductWrapper,
   ProductsPageProductName,
   ProductsPageProductPriceRow,
   ProductsPageProductOldPrice,
   ProductsPageProductPrice,
+  ProductsPageContentWrapper,
 } from '@productsPage/ProductsPage.styles';
+import ProductsPageSearchInput from '@productsPage/ProductsPageSearchInput';
 
 export async function getServerSideProps(): Promise<IProducts> {
   const resJson = await getPageData();
@@ -36,36 +39,43 @@ export default function Products({ pageData: { products } }: IProductsProps): JS
       <ProductsPageHighlightedTitle>
         <ProductsPageTitleText>Products</ProductsPageTitleText>
       </ProductsPageHighlightedTitle>
-      <ProductsPageProductsContainer>
-        {products.map(
-          ({
-            productId,
-            productName,
-            productIsOnSale,
-            productPrice,
-            productOldPrice,
-            productImages,
-          }: TProductOnProductsPage) => (
-            <Link href={`./products/${productId}`} passHref key={productName}>
-              <ProductsPageProductWrapper>
-                <ProductImages productImagesData={productImages} isOnProductsPage />
-                <ProductsPageProductName>{productName}</ProductsPageProductName>
 
-                <ProductsPageProductPriceRow>
-                  {productIsOnSale && (
-                    <ProductsPageProductOldPrice>{`${productOldPrice.toFixed(
-                      2,
-                    )}$`}</ProductsPageProductOldPrice>
-                  )}
-                  <ProductsPageProductPrice productIsOnSale={productIsOnSale}>
-                    {`${productPrice.toFixed(2)}$`}
-                  </ProductsPageProductPrice>
-                </ProductsPageProductPriceRow>
-              </ProductsPageProductWrapper>
-            </Link>
-          ),
-        )}
-      </ProductsPageProductsContainer>
+      <ProductsPageContentWrapper>
+        <ProductsPageSearchInputsContainer>
+          <ProductsPageSearchInput />
+        </ProductsPageSearchInputsContainer>
+
+        <ProductsPageProductsContainer>
+          {products.map(
+            ({
+              productId,
+              productName,
+              productIsOnSale,
+              productPrice,
+              productOldPrice,
+              productImages,
+            }: TProductOnProductsPage) => (
+              <Link href={`./products/${productId}`} passHref key={productName}>
+                <ProductsPageProductWrapper>
+                  <ProductImages productImagesData={productImages} isOnProductsPage />
+                  <ProductsPageProductName>{productName}</ProductsPageProductName>
+
+                  <ProductsPageProductPriceRow>
+                    {productIsOnSale && (
+                      <ProductsPageProductOldPrice>{`${productOldPrice.toFixed(
+                        2,
+                      )}$`}</ProductsPageProductOldPrice>
+                    )}
+                    <ProductsPageProductPrice productIsOnSale={productIsOnSale}>
+                      {`${productPrice.toFixed(2)}$`}
+                    </ProductsPageProductPrice>
+                  </ProductsPageProductPriceRow>
+                </ProductsPageProductWrapper>
+              </Link>
+            ),
+          )}
+        </ProductsPageProductsContainer>
+      </ProductsPageContentWrapper>
     </>
   );
 }
