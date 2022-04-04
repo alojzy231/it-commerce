@@ -26,13 +26,11 @@ const ProductsPageSearchInput = styled.input.attrs({
   &:hover {
     filter: brightness(1.2);
 
-    cursor: pointer;
+    cursor: text;
   }
 
   &:active {
     filter: brightness(1.4);
-
-    cursor: pointer;
   }
 
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
