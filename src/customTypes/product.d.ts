@@ -67,9 +67,18 @@ export type TProductOnProductsPage = {
 
 export interface IProductsProps {
   pageData: {
-    productsData: TProductOnProductsPage[];
+    products: TProductOnProductsPage[];
   };
 }
 export interface IProducts {
+  props: IProductsProps;
+}
+
+export interface IProductOnHomepageProps {
+  pageData: {
+    product: TProduct;
+  };
+}
+export interface IProductOnHomepage {
   props: IProductsProps;
 }
