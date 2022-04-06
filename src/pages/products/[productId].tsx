@@ -10,6 +10,7 @@ import {
   TProduct,
   IProductNotFound,
 } from '@customTypes/product';
+import GoBackButton from '@generic/buttons/GoBackButton';
 import Product from '@generic/Product';
 
 export async function getServerSideProps(
@@ -38,5 +39,10 @@ export async function getServerSideProps(
 }
 
 export default function ProductPage({ pageData: { product } }: IProductPageProps): JSX.Element {
-  return <Product productData={product} />;
+  return (
+    <>
+      <GoBackButton />
+      <Product productData={product} />;
+    </>
+  );
 }

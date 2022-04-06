@@ -8,6 +8,7 @@ import {
   ProductsPageHighlightedTitle,
   ProductsPageTitleText,
 } from '@productsPage/ProductsPage.styles';
+import GoBackButton from '@generic/buttons/GoBackButton';
 
 export async function getServerSideProps(): Promise<IProducts> {
   const resJson = await getPageData();
@@ -26,6 +27,7 @@ export async function getServerSideProps(): Promise<IProducts> {
 export default function Products({ pageData: { productsData } }: IProductsProps): JSX.Element {
   return (
     <>
+      <GoBackButton />
       <ProductsPageHighlightedTitle>
         <ProductsPageTitleText>Products</ProductsPageTitleText>
       </ProductsPageHighlightedTitle>
