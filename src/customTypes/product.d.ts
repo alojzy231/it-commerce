@@ -65,13 +65,13 @@ export type TProductOnProductsPage = {
   productImages: TProductImages;
 };
 
-export interface IProductsProps {
+export interface IProductsOnProductsPageProps {
   pageData: {
-    products: TProductOnProductsPage[];
+    productsData: TProductOnProductsPage[];
   };
 }
-export interface IProducts {
-  props: IProductsProps;
+export interface IProductsOnProductsPage {
+  props: IProductsOnProductsPageProps;
 }
 
 export type TProductOnHomepage = {
