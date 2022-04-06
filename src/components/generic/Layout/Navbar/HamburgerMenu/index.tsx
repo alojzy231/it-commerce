@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import HamburgerIcon from '@icons/HamburgerIcon';
-import IconButton from '@generic/IconButton';
+import IconButton from '@generic/buttons/IconButton';
 
 import Sidebar from '../Sidebar';
 

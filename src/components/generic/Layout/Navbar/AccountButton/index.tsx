@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AccountIcon from '@icons/AccountIcon';
-import IconButton from '@generic/IconButton';
+import IconButton from '@generic/buttons/IconButton';
 
 import AccountButtonContainer from './AccountButton.styles';
 

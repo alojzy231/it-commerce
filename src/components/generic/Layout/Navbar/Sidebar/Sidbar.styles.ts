@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import IconButton from '@generic/IconButton';
+import IconButton from '@generic/buttons/IconButton';
 
 interface ISidebar {
   isOpened: boolean;

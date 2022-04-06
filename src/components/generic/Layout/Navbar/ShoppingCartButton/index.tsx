@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ShoppingCartIcon from '@icons/ShoppingCartIcon';
-import IconButton from '@generic/IconButton';
+import IconButton from '@generic/buttons/IconButton';
 
 import ShoppingCartButtonContainer from './ShoppingCartButton.styles';
 
