@@ -20,34 +20,35 @@ interface IProductsPageProducts {
 export default function ProductsPageProducts({ products }: IProductsPageProducts): JSX.Element {
   return (
     <ProductsPageProductsContainer>
-      {products.map(
-        ({
-          productId,
-          productName,
-          productIsOnSale,
-          productPrice,
-          productOldPrice,
-          productImages,
-        }: TProductOnProductsPage) => (
-          <Link href={`./products/${productId}`} passHref key={productName}>
-            <ProductsPageProductWrapper>
-              <ProductImages productImagesData={productImages} isOnProductsPage />
-              <ProductsPageProductName>{productName}</ProductsPageProductName>
+      {products &&
+        products.map(
+          ({
+            productId,
+            productName,
+            productIsOnSale,
+            productPrice,
+            productOldPrice,
+            productImages,
+          }: TProductOnProductsPage) => (
+            <Link href={`./products/${productId}`} passHref key={productName}>
+              <ProductsPageProductWrapper>
+                <ProductImages productImagesData={productImages} isOnProductsPage />
+                <ProductsPageProductName>{productName}</ProductsPageProductName>
 
-              <ProductsPageProductPriceRow>
-                {productIsOnSale && (
-                  <ProductsPageProductOldPrice>{`${productOldPrice.toFixed(
-                    2,
-                  )}$`}</ProductsPageProductOldPrice>
-                )}
-                <ProductsPageProductPrice productIsOnSale={productIsOnSale}>
-                  {`${productPrice.toFixed(2)}$`}
-                </ProductsPageProductPrice>
-              </ProductsPageProductPriceRow>
-            </ProductsPageProductWrapper>
-          </Link>
-        ),
-      )}
+                <ProductsPageProductPriceRow>
+                  {productIsOnSale && (
+                    <ProductsPageProductOldPrice>{`${productOldPrice.toFixed(
+                      2,
+                    )}$`}</ProductsPageProductOldPrice>
+                  )}
+                  <ProductsPageProductPrice productIsOnSale={productIsOnSale}>
+                    {`${productPrice.toFixed(2)}$`}
+                  </ProductsPageProductPrice>
+                </ProductsPageProductPriceRow>
+              </ProductsPageProductWrapper>
+            </Link>
+          ),
+        )}
     </ProductsPageProductsContainer>
   );
 }

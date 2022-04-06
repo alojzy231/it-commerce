@@ -12,25 +12,25 @@ import {
 export async function getServerSideProps(): Promise<IProducts> {
   const resJson = await getPageData();
   const pageData: IPageData = mapData(resJson);
-  const products: TProductOnProductsPage[] = sortDataForProductsPage(pageData.product);
+  const productsData: TProductOnProductsPage[] = sortDataForProductsPage(pageData.product);
 
   return {
     props: {
       pageData: {
-        products,
+        productsData,
       },
     },
   };
 }
 
-export default function Products({ pageData: { products } }: IProductsProps): JSX.Element {
+export default function Products({ pageData: { productsData } }: IProductsProps): JSX.Element {
   return (
     <>
       <ProductsPageHighlightedTitle>
         <ProductsPageTitleText>Products</ProductsPageTitleText>
       </ProductsPageHighlightedTitle>
 
-      <ProductsPageContent products={products} />
+      <ProductsPageContent productsData={productsData} />
     </>
   );
 }

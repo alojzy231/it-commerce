@@ -67,7 +67,7 @@ export type TProductOnProductsPage = {
 
 export interface IProductsProps {
   pageData: {
-    products: TProductOnProductsPage[];
+    productsData: TProductOnProductsPage[];
   };
 }
 export interface IProducts {

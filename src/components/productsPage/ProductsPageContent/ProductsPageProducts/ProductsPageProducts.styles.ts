@@ -29,6 +29,8 @@ export const ProductsPageProductWrapper = styled.a`
   display: flex;
   flex-direction: column;
 
+  position: relative;
+
   outline: none;
   border: none;
 
@@ -38,7 +40,7 @@ export const ProductsPageProductWrapper = styled.a`
 
   cursor: pointer;
 
-  transition: 50ms ease;
+  transition: 1s ease;
 
   &:hover {
     box-shadow: 12px 12px 4px rgba(0, 0, 0, 0.25);
