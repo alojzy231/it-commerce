@@ -74,11 +74,20 @@ export interface IProducts {
   props: IProductsProps;
 }
 
+export type TProductOnHomepage = {
+  productId: number;
+  productName: string;
+  productIsOnSale: boolean;
+  productPrice: number;
+  productOldPrice: number;
+  productImages: TProductImages;
+};
+
 export interface IProductOnHomepageProps {
   pageData: {
     product: TProduct;
   };
 }
 export interface IProductOnHomepage {
-  props: IProductsProps;
+  props: IProductOnHomepageProps;
 }
