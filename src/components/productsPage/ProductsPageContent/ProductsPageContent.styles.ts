@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import FilterByButton from '@generic/buttons/FIlterByButton';
 import { Header5, Header6 } from '@styles/typography';
 
 export const ProductsPageContentContainer = styled.div`
@@ -53,13 +54,13 @@ export const ProductsPageSearchInput = styled.input.attrs({
   }
 
   &:hover {
-    filter: brightness(1.2);
+    opacity: 0.8;
 
     cursor: text;
   }
 
   &:active {
-    filter: brightness(1.4);
+    opacity: 0.6;
   }
 
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
@@ -68,5 +69,13 @@ export const ProductsPageSearchInput = styled.input.attrs({
     padding: 0.6rem 1.2rem 0.6rem 4.4rem;
 
     ${Header6};
+  }
+`;
+
+export const ProductsPageFilterByButton = styled(FilterByButton)`
+  margin: auto 0 auto 4.2rem;
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    margin-left: 1.8rem;
   }
 `;

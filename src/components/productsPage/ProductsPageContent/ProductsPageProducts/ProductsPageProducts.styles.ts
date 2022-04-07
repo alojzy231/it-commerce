@@ -40,7 +40,7 @@ export const ProductsPageProductWrapper = styled.a`
 
   cursor: pointer;
 
-  transition: 1s ease;
+  transition: 0.3s ease;
 
   &:hover {
     box-shadow: 12px 12px 4px rgba(0, 0, 0, 0.25);

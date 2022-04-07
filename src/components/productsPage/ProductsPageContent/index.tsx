@@ -7,6 +7,7 @@ import {
   ProductsPageContentContainer,
   ProductsPageSearchInputsContainer,
   ProductsPageSearchInput,
+  ProductsPageFilterByButton,
 } from './ProductsPageContent.styles';
 
 interface IProductsPageContent {
@@ -43,6 +44,7 @@ export default function ProductsPageContent({ productsData }: IProductsPageConte
           value={searchInputValue}
           placeholder="Search"
         />
+        <ProductsPageFilterByButton />
       </ProductsPageSearchInputsContainer>
 
       <ProductsPageProducts products={products} />
