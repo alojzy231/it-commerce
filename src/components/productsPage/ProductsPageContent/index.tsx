@@ -21,7 +21,7 @@ export default function ProductsPageContent({ productsData }: IProductsPageConte
     if (searchInputValue) {
       setProducts(
         productsData.filter(({ productName }: TProductOnProductsPage) =>
-          productName.toLowerCase().includes(searchInputValue),
+          productName.toLowerCase().includes(searchInputValue.toLowerCase()),
         ),
       );
     } else {
