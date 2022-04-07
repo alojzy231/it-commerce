@@ -1,6 +1,6 @@
 import { TOGGLE_IS_MOBILE, IIsMobileAction } from '../actions/isMobileActions';
 
-const initialState: boolean = false;
+const initialState: boolean = true;
 
 const isMobileReducer = (state: boolean = initialState, action: IIsMobileAction): boolean => {
   switch (action.type) {
