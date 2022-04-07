@@ -83,6 +83,7 @@ export function sortDataForProductsPage(productsArray) {
     ({
       productId,
       productName,
+      productCollection,
       productIsOnSale,
       productPrice,
       productOldPrice,
@@ -93,6 +94,7 @@ export function sortDataForProductsPage(productsArray) {
     }) => ({
       productId,
       productName,
+      productCollection,
       productIsOnSale,
       productPrice,
       productOldPrice: productOldPrice || null,

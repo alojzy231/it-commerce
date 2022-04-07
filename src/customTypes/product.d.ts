@@ -59,6 +59,7 @@ export interface IProductNotFound {
 export type TProductOnProductsPage = {
   productId: number;
   productName: string;
+  productCollection: string;
   productIsOnSale: boolean;
   productPrice: number;
   productOldPrice: number;
