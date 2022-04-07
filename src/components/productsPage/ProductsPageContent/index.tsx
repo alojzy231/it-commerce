@@ -21,7 +21,10 @@ export default function ProductsPageContent({ productsData }: IProductsPageConte
     if (searchInputValue) {
       setProducts(
         productsData.filter(({ productName }: TProductOnProductsPage) =>
-          productName.toLowerCase().includes(searchInputValue.toLowerCase()),
+          productName
+            .toLowerCase()
+            .replace(/\s/g, '')
+            .includes(searchInputValue.toLowerCase().replace(/\s/g, '')),
         ),
       );
     } else {
