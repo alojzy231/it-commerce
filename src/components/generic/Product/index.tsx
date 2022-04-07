@@ -17,7 +17,6 @@ import {
   ProductDetailsSectionRow,
   ProductInputLabel,
   ProductInputSelect,
-  ProductInputSelectOption,
   ProductGenericButton,
   ProductPrice,
   ProductOldPrice,
@@ -100,9 +99,7 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
                   Colors:
                   <ProductInputSelect>
                     {productAvailableColors.map((productAvailableColor) => (
-                      <ProductInputSelectOption key={productAvailableColor}>
-                        {productAvailableColor}
-                      </ProductInputSelectOption>
+                      <option key={productAvailableColor}>{productAvailableColor}</option>
                     ))}
                   </ProductInputSelect>
                 </ProductInputLabel>
@@ -113,9 +110,7 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
                   Size:
                   <ProductInputSelect>
                     {productAvailableSizes.map((productAvailableSize) => (
-                      <ProductInputSelectOption key={productAvailableSize}>
-                        {productAvailableSize}
-                      </ProductInputSelectOption>
+                      <option key={productAvailableSize}>{productAvailableSize}</option>
                     ))}
                   </ProductInputSelect>
                 </ProductInputLabel>

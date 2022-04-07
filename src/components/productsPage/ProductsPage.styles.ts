@@ -51,7 +51,6 @@ export const ProductsPageProductsContainer = styled.div`
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* overflow: hidden; */
 
   @media (max-width: ${({ theme: { medias } }): string => medias.tablet}) {
     grid-template-columns: repeat(2, 1fr);

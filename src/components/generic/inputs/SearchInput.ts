@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { Header5, Header6 } from '@styles/typography';
 
-const ProductsPageSearchInput = styled.input.attrs({
+const SearchInput = styled.input.attrs({
   type: 'text',
 })`
   width: 28.4rem;
@@ -42,4 +42,4 @@ const ProductsPageSearchInput = styled.input.attrs({
   }
 `;
 
-export default ProductsPageSearchInput;
+export default SearchInput;

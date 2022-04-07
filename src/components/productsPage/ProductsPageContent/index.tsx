@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 import { TProductOnProductsPage } from '@customTypes/product';
+import SearchInput from '@generic/inputs/SearchInput';
 
 import ProductsPageProducts from './ProductsPageProducts';
 import {
   ProductsPageContentContainer,
   ProductsPageSearchInputsContainer,
-  ProductsPageSearchInput,
   ProductsPageFilterByButton,
 } from './ProductsPageContent.styles';
 
@@ -39,7 +39,7 @@ export default function ProductsPageContent({ productsData }: IProductsPageConte
   return (
     <ProductsPageContentContainer>
       <ProductsPageSearchInputsContainer>
-        <ProductsPageSearchInput
+        <SearchInput
           onChange={handleSearchInputChange}
           value={searchInputValue}
           placeholder="Search"

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import SelectInput from '@generic/inputs/selectInput';
+import NumberInput from '@generic/inputs/NumberInput';
 import { Header2, Header3, Header4, Header5 } from '@styles/typography';
 import GenericButton from '@generic/buttons/GenericButton';
 
@@ -140,68 +142,13 @@ export const ProductInputLabel = styled.label`
     ${Header5};
   }
 `;
-export const ProductInputSelect = styled.select`
+export const ProductInputSelect = styled(SelectInput)`
   padding: 0 2rem;
+
   margin-left: 1.6rem;
-
-  ${Header4};
-  background-color: ${({ theme: { colors } }): string => colors.white};
-  color: ${({ theme: { colors } }): string => colors.secondary};
-
-  border: 0.1rem solid ${({ theme: { colors } }): string => colors.secondary};
-  border-radius: 2.4rem;
-
-  &:hover {
-    outline: none;
-
-    filter: brightness(1.1);
-
-    cursor: pointer;
-  }
-
-  &:active {
-    outline: none;
-    filter: brightness(1.3);
-
-    cursor: pointer;
-  }
-
-  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
-    ${Header5};
-  }
 `;
-export const ProductInputQuantityNumber = styled.input.attrs({
-  type: 'number',
-})`
+export const ProductInputQuantityNumber = styled(NumberInput)`
   width: 10.2rem;
 
-  padding: 0 2rem;
   margin-left: 1.6rem;
-
-  ${Header4};
-
-  color: ${({ theme: { colors } }): string => colors.secondary};
-
-  border: 0.1rem solid ${({ theme: { colors } }): string => colors.secondary};
-  border-radius: 2.4rem;
-
-  &:hover {
-    outline: none;
-
-    filter: brightness(1.1);
-
-    cursor: pointer;
-  }
-
-  &:active {
-    outline: none;
-    filter: brightness(1.3);
-
-    cursor: pointer;
-  }
-
-  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
-    ${Header5};
-  }
 `;
-export const ProductInputSelectOption = styled.option``;
