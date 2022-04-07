@@ -35,7 +35,11 @@ export default function ProductsPageContent({ productsData }: IProductsPageConte
   return (
     <ProductsPageContentContainer>
       <ProductsPageSearchInputsContainer>
-        <ProductsPageSearchInput onChange={handleSearchInputChange} value={searchInputValue} />
+        <ProductsPageSearchInput
+          onChange={handleSearchInputChange}
+          value={searchInputValue}
+          placeholder="Search"
+        />
       </ProductsPageSearchInputsContainer>
 
       <ProductsPageProducts products={products} />

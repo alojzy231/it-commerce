@@ -46,6 +46,12 @@ export const ProductsPageSearchInput = styled.input.attrs({
   background-repeat: no-repeat;
   background-position: 1.2rem;
 
+  &::placeholder {
+    color: ${({ theme: { colors } }): string => colors.secondary};
+
+    opacity: 0.8;
+  }
+
   &:hover {
     filter: brightness(1.2);
 
