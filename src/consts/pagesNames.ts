@@ -1,4 +1,4 @@
-import PRODUCTS_COLLECTIONS from './productsCollections';
+import { PRODUCTS_COLLECTIONS } from './products';
 
 export type TSubpage = {
   name: string;
