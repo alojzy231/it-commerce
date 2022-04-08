@@ -80,7 +80,7 @@ export default function FilterByModalWindow({
     } = {};
 
     Object.entries(formValues).forEach(([key, value]) => {
-      if (value) {
+      if (value !== '') {
         if (key === 'priceRange') {
           query.priceMin = value.minValue;
           query.priceMax = value.maxValue;
