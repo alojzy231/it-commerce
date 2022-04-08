@@ -23,14 +23,19 @@ const SearchInput = styled.input.attrs({
   background-repeat: no-repeat;
   background-position: 1.2rem;
 
+  &::placeholder {
+    color: ${({ theme: { colors } }): string => colors.secondary};
+    opacity: 0.8;
+  }
+
   &:hover {
-    filter: brightness(1.2);
+    opacity: 0.8;
 
     cursor: text;
   }
 
   &:active {
-    filter: brightness(1.4);
+    opacity: 0.6;
   }
 
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
