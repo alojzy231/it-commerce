@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import useRangeInput from '@hooks/useRangeInput';
 
@@ -15,29 +15,46 @@ import {
   MinMaxRangeInputRangeLabelsContainer,
 } from './MinMaxRangeInput.styles';
 
+export type TMinMaxRangeInputValues = {
+  minValue: number;
+  maxValue: number;
+};
+
 interface IMinMaxRangeInput {
   className?: string;
   name?: string;
+  minValue: number;
   maxValue: number;
+  getValues: (minMaxRangeInputValues: TMinMaxRangeInputValues) => void;
 }
 
 export default function MinMaxRangeInput({
   className,
   name,
+  minValue,
   maxValue,
+  getValues,
 }: IMinMaxRangeInput): JSX.Element {
-  const minValue = 1;
-
   const [rangeInput, handleMinValueChange, handleMaxValueChange] = useRangeInput(
     minValue,
     maxValue,
   );
+
+  useEffect((): void => {
+    const minMaxRangeInputValues: TMinMaxRangeInputValues = {
+      minValue: rangeInput.progressbarThumbPosition.minPosition,
+      maxValue: rangeInput.progressbarThumbPosition.maxPosition,
+    };
+    getValues(minMaxRangeInputValues);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rangeInput]);
 
   return (
     <MinMaxRangeInputContainer className={className}>
       <InputLabel>
         Min:
         <MinMaxRangeNumberInput
+          step={0.01}
           value={rangeInput.currentValues.minValue}
           onChange={handleMinValueChange}
         />
@@ -47,6 +64,7 @@ export default function MinMaxRangeInput({
       <InputLabel>
         Max:
         <MinMaxRangeNumberInput
+          step={0.01}
           value={rangeInput.currentValues.maxValue}
           onChange={handleMaxValueChange}
         />
