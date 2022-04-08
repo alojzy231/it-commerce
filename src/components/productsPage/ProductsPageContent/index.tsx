@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { TProductOnProductsPage } from '@customTypes/product';
-import SearchInput from '@generic/inputs/SearchInput';
+import SearchInput from '@generic/inputs/SearchInput.styles';
 
 import ProductsPageProducts from './ProductsPageProducts';
 import {

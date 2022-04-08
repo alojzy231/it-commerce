@@ -57,12 +57,14 @@ export default function MinMaxRangeInput({
         <MinMaxRangeInputRangeMinInput
           name={`${name}Min`}
           value={rangeInput.progressbarThumbPosition.minPosition}
+          min={minValue}
           max={maxValue}
           onChange={handleMinValueChange}
         />
         <MinMaxRangeInputRangeMaxInput
           name={`${name}Max`}
           value={rangeInput.progressbarThumbPosition.maxPosition}
+          min={minValue}
           max={maxValue}
           onChange={handleMaxValueChange}
         />

@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+
+import { IOpenModalAction, openModal } from '@redux/actions/modalActions';
 
 import IconButton from '../IconButton';
 
@@ -8,9 +11,11 @@ interface IFilterByButton {
   className?: string;
 }
 export default function FilterByButton({ className }: IFilterByButton): JSX.Element {
-  return (
-    <IconButton className={className} icon={<FilterByButtonIcon />} onClick={(): void => {}} />
-  );
+  const dispatch = useDispatch();
+
+  const handleClick = (): IOpenModalAction => dispatch(openModal('filterBy'));
+
+  return <IconButton className={className} icon={<FilterByButtonIcon />} onClick={handleClick} />;
 }
 
 FilterByButton.defaultProps = {

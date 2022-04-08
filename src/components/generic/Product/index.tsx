@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 import { convertRichTextToReactComponent } from '@clients/contentful/dataMapper';
-import { TProductImage, TProduct } from '@customTypes/product';
+import { TProductImage, TProduct, EAvailableSizes } from '@customTypes/product';
 import HighlightedTitle from '@generic/HighlightedTitle';
+import InputLabel from '@generic/inputs/InputLabel.styles';
+import SelectInput from '@generic/inputs/SelectInput.styles';
 import GenericButton from '@generic/buttons/GenericButton';
 
 import {
@@ -15,8 +17,6 @@ import {
   ProductDescription,
   ProductDetailsSection,
   ProductDetailsSectionRow,
-  ProductInputLabel,
-  ProductInputSelect,
   ProductGenericButton,
   ProductPrice,
   ProductOldPrice,
@@ -95,36 +95,44 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
           ) : (
             <>
               <ProductDetailsSectionRow>
-                <ProductInputLabel htmlFor="colors">
+                <InputLabel htmlFor="colors">
                   Colors:
-                  <ProductInputSelect>
-                    {productAvailableColors.map((productAvailableColor) => (
-                      <option key={productAvailableColor}>{productAvailableColor}</option>
-                    ))}
-                  </ProductInputSelect>
-                </ProductInputLabel>
+                  <SelectInput>
+                    {productAvailableColors.map(
+                      (productAvailableColor: string): JSX.Element => (
+                        <option key={productAvailableColor} value={productAvailableColor}>
+                          {productAvailableColor}
+                        </option>
+                      ),
+                    )}
+                  </SelectInput>
+                </InputLabel>
               </ProductDetailsSectionRow>
 
               <ProductDetailsSectionRow>
-                <ProductInputLabel htmlFor="size">
+                <InputLabel htmlFor="size">
                   Size:
-                  <ProductInputSelect>
-                    {productAvailableSizes.map((productAvailableSize) => (
-                      <option key={productAvailableSize}>{productAvailableSize}</option>
-                    ))}
-                  </ProductInputSelect>
-                </ProductInputLabel>
+                  <SelectInput>
+                    {productAvailableSizes.map(
+                      (productAvailableSize: EAvailableSizes): JSX.Element => (
+                        <option key={productAvailableSize} value={productAvailableSize}>
+                          {productAvailableSize}
+                        </option>
+                      ),
+                    )}
+                  </SelectInput>
+                </InputLabel>
                 <ProductGenericButton onClick={(): void => {}}>Add to cart</ProductGenericButton>
               </ProductDetailsSectionRow>
 
               <ProductDetailsSectionRow>
-                <ProductInputLabel htmlFor="quantity">
+                <InputLabel htmlFor="quantity">
                   Quantity:
                   <ProductInputQuantityNumber
                     value={productQuantity}
                     onChange={handleProductQuantityChange}
                   />
-                </ProductInputLabel>
+                </InputLabel>
                 <ProductGenericButton onClick={(): void => {}}>Buy now</ProductGenericButton>
               </ProductDetailsSectionRow>
             </>

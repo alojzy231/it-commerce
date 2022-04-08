@@ -4,6 +4,7 @@ import TModalType from '@customTypes/modal';
 
 import DisclaimerModalWindow from './DisclaimerModalWindow';
 import MagnifyImageModalWindow from './MagnifyImageModalWindow';
+import FilterByModalWindow from './FilterByModalWindow';
 
 interface IModalWindow {
   modalType: TModalType;
@@ -19,6 +20,8 @@ export default function ModalWindow({
       return <DisclaimerModalWindow handleCloseModal={handleCloseModal} />;
     case 'magnifyImage':
       return <MagnifyImageModalWindow handleCloseModal={handleCloseModal} />;
+    case 'filterBy':
+      return <FilterByModalWindow handleCloseModal={handleCloseModal} />;
     default:
       return null;
   }

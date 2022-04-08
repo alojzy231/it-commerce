@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import SelectInput from '@generic/inputs/selectInput';
-import NumberInput from '@generic/inputs/NumberInput';
+import NumberInput from '@generic/inputs/NumberInput.styles';
 import { Header2, Header3, Header4, Header5 } from '@styles/typography';
 import GenericButton from '@generic/buttons/GenericButton';
 
@@ -136,19 +135,6 @@ export const ProductGenericButton = styled(GenericButton)`
     margin: 2rem auto 0 auto;
   }
 `;
-export const ProductInputLabel = styled.label`
-  ${Header4};
-  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
-    ${Header5};
-  }
-`;
-export const ProductInputSelect = styled(SelectInput)`
-  padding: 0 2rem;
-
-  margin-left: 1.6rem;
-`;
 export const ProductInputQuantityNumber = styled(NumberInput)`
   width: 10.2rem;
-
-  margin-left: 1.6rem;
 `;

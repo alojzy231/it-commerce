@@ -57,7 +57,7 @@ export const GenericModalWindowHeaderTitle = styled.h4`
 export const GenericModalWindowContentContainer = styled.div`
   width: 100%;
 
-  padding: 2rem;
+  padding: 1rem;
 
   border: 0.3rem solid ${({ theme: { colors } }): string => colors.secondary};
 
