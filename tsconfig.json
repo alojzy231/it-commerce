@@ -28,7 +28,8 @@
       "@customTypes/*": ["./src/customTypes/*"],
       "@generic/*": ["./src/components/generic/*"],
       "@homepage/*": ["./src/components/homepage/*"],
-      "@productsPage/*": ["./src/components/productsPage/*"]
+      "@productsPage/*": ["./src/components/productsPage/*"],
+      "@custom404/*": ["./src/components/custom404/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
