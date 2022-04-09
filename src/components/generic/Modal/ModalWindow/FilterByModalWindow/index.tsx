@@ -26,7 +26,7 @@ interface IFilterByModalWindow {
 }
 
 interface IFormValues {
-  filterOption: EFilterOptions;
+  sortBy: EFilterOptions;
   collection: EProductsCollections | string;
   size: EProductsSizes | string;
   priceRange: {
@@ -44,7 +44,7 @@ export default function FilterByModalWindow({
   const router = useRouter();
 
   const [formValues, setFormValues] = useState<IFormValues>({
-    filterOption: EFilterOptions.newest,
+    sortBy: EFilterOptions.newest,
     collection: '',
     size: '',
     priceRange: {
@@ -102,7 +102,7 @@ export default function FilterByModalWindow({
           Filter by:
           <SelectInput
             onChange={(event: React.ChangeEvent<HTMLSelectElement>): void =>
-              handleInputChange(event, 'filterOption')
+              handleInputChange(event, 'sortBy')
             }
           >
             {FILTER_OPTIONS.map(
