@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 import { convertRichTextToReactComponent } from '@clients/contentful/dataMapper';
-import { TProduct, EAvailableSizes } from '@customTypes/product';
+import { TProduct } from '@customTypes/product';
+import { EProductsSizes } from '@consts/products';
 import HighlightedTitle from '@generic/HighlightedTitle';
 import InputLabel from '@generic/inputs/InputLabel.styles';
 import SelectInput from '@generic/inputs/SelectInput.styles';
@@ -104,7 +105,7 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
                   Size:
                   <SelectInput>
                     {productAvailableSizes.map(
-                      (productAvailableSize: EAvailableSizes): JSX.Element => (
+                      (productAvailableSize: EProductsSizes): JSX.Element => (
                         <option key={productAvailableSize} value={productAvailableSize}>
                           {productAvailableSize}
                         </option>
