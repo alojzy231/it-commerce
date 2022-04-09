@@ -1,0 +1,65 @@
+import {
+  ADD_ITEM_TO_SHOPPING_CART,
+  CHANGE_QUANTITY_OF_ITEM_IN_SHOPPING_CART,
+  IProductShoppingCartAction,
+  REMOVE_ITEM_FROM_SHOPPING_CART,
+  TShoppingCartProduct,
+} from '@redux/actions/shoppingCartActions';
+
+const initialState: TShoppingCartProduct[] | null = [];
+
+const removeItem = (
+  shoppingCartState: TShoppingCartProduct[],
+  removeProductId: string,
+): TShoppingCartProduct[] =>
+  shoppingCartState.filter((product) => product.productId !== removeProductId);
+
+const changeQuantityOfItem = (
+  shoppingCartState: TShoppingCartProduct[],
+  productId: string,
+  newQuantity: number,
+): TShoppingCartProduct[] => {
+  const newState: TShoppingCartProduct[] = [...shoppingCartState];
+
+  const index = newState.findIndex((product) => product.productId === productId);
+
+  newState[index].quantity = newQuantity;
+
+  return [...newState];
+};
+
+const addItem = (
+  shoppingCartState: TShoppingCartProduct[],
+  newProduct: TShoppingCartProduct,
+): TShoppingCartProduct[] => {
+  const newState: TShoppingCartProduct[] = [...shoppingCartState];
+  const index = newState.findIndex((product) => product.productId === newProduct.productId);
+  if (index === -1) {
+    return [...newState, newProduct];
+  }
+  const val1: number = newProduct.quantity || 1;
+  const val2: number = newState[index].quantity || 1;
+  const newQuantity = val1 + val2;
+
+  newState[index].quantity = newQuantity;
+
+  return [...newState];
+};
+
+const shoppingCartReducer = (
+  state: TShoppingCartProduct[] = initialState,
+  action: IProductShoppingCartAction,
+): TShoppingCartProduct[] | null => {
+  switch (action.type) {
+    case ADD_ITEM_TO_SHOPPING_CART:
+      return addItem(state, action.payload);
+    case REMOVE_ITEM_FROM_SHOPPING_CART:
+      return removeItem(state, action.payload.productId);
+    case CHANGE_QUANTITY_OF_ITEM_IN_SHOPPING_CART:
+      return changeQuantityOfItem(state, action.payload.productId, action.payload.newQuantity || 1);
+    default:
+      return state;
+  }
+};
+
+export default shoppingCartReducer;

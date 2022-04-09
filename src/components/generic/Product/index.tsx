@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 
 import { convertRichTextToReactComponent } from '@clients/contentful/dataMapper';
 import { TProduct } from '@customTypes/product';
@@ -8,6 +9,7 @@ import HighlightedTitle from '@generic/HighlightedTitle';
 import InputLabel from '@generic/inputs/InputLabel.styles';
 import SelectInput from '@generic/inputs/SelectInput.styles';
 import GenericButton from '@generic/buttons/GenericButton';
+import { addItemToShoppingCart } from '@redux/actions/shoppingCartActions';
 
 import {
   ProductContainer,
@@ -31,6 +33,12 @@ interface IProduct {
   isOnHomepage?: boolean;
 }
 
+interface IProductInputsValues {
+  color: string;
+  size: EProductsSizes;
+  quantity: number;
+}
+
 export default function Product({ productData, isOnHomepage }: IProduct): JSX.Element {
   const {
     productId,
@@ -44,7 +52,13 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
     productAvailableSizes,
   }: TProduct = productData;
 
-  const [productQuantity, setProductQuantity] = useState<number>(1);
+  const dispatch = useDispatch();
+
+  const [productInputsValues, setProductIputsValues] = useState<IProductInputsValues>({
+    color: productAvailableColors[0],
+    size: EProductsSizes[productAvailableSizes[0]],
+    quantity: 1,
+  });
 
   const price = `${productPrice.toFixed(2)}$`;
 
@@ -52,14 +66,34 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
 
   const Description = convertRichTextToReactComponent(ProductDescription, productDescription);
 
-  const handleProductQuantityChange = ({
-    target: { value },
-  }: React.ChangeEvent<HTMLInputElement>): void => {
-    const quantity: number = parseInt(value, 10);
+  const handleProductColorChange = ({ target }: React.ChangeEvent<HTMLSelectElement>): void => {
+    setProductIputsValues((prevState: IProductInputsValues) => ({
+      ...prevState,
+      color: target.value,
+    }));
+  };
+
+  const handleProductSizeChange = ({ target }: React.ChangeEvent<HTMLSelectElement>): void => {
+    setProductIputsValues((prevState: IProductInputsValues) => ({
+      ...prevState,
+      size: EProductsSizes[target.value],
+    }));
+  };
+
+  const handleProductQuantityChange = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
+    const quantity: number = parseInt(target.value, 10);
 
     if (quantity > 0 || !quantity) {
-      setProductQuantity(quantity);
+      setProductIputsValues((prevState: IProductInputsValues) => ({ ...prevState, quantity }));
     }
+  };
+
+  const handleAddToCart = (): void => {
+    dispatch(addItemToShoppingCart({ productId, ...productInputsValues }));
+  };
+
+  const handleBuyNow = (): void => {
+    // dispatch(changeQuantityOfItemInShoppingCart(productId, 30));
   };
 
   return (
@@ -88,7 +122,7 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
               <ProductDetailsSectionRow>
                 <InputLabel htmlFor="colors">
                   Colors:
-                  <SelectInput>
+                  <SelectInput onChange={handleProductColorChange}>
                     {productAvailableColors.map(
                       (productAvailableColor: string): JSX.Element => (
                         <option key={productAvailableColor} value={productAvailableColor}>
@@ -103,7 +137,7 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
               <ProductDetailsSectionRow>
                 <InputLabel htmlFor="size">
                   Size:
-                  <SelectInput>
+                  <SelectInput onChange={handleProductSizeChange}>
                     {productAvailableSizes.map(
                       (productAvailableSize: EProductsSizes): JSX.Element => (
                         <option key={productAvailableSize} value={productAvailableSize}>
@@ -113,18 +147,18 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
                     )}
                   </SelectInput>
                 </InputLabel>
-                <ProductGenericButton onClick={(): void => {}}>Add to cart</ProductGenericButton>
+                <ProductGenericButton onClick={handleAddToCart}>Add to cart</ProductGenericButton>
               </ProductDetailsSectionRow>
 
               <ProductDetailsSectionRow>
                 <InputLabel htmlFor="quantity">
                   Quantity:
                   <ProductInputQuantityNumber
-                    value={productQuantity}
+                    value={productInputsValues.quantity || ''}
                     onChange={handleProductQuantityChange}
                   />
                 </InputLabel>
-                <ProductGenericButton onClick={(): void => {}}>Buy now</ProductGenericButton>
+                <ProductGenericButton onClick={handleBuyNow}>Buy now</ProductGenericButton>
               </ProductDetailsSectionRow>
             </>
           )}
