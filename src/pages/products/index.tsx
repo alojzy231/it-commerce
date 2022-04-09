@@ -1,13 +1,8 @@
 import React from 'react';
 
 import getPageData from '@clients/contentful/getPageData';
-import mapData, { sortDataForProductsPage } from '@clients/contentful/dataMapper';
-import {
-  IPageData,
-  IProductsOnProductsPage,
-  IProductsOnProductsPageProps,
-  TProductOnProductsPage,
-} from '@customTypes/product';
+import mapData, { sortProductsData } from '@clients/contentful/dataMapper';
+import { IPageData, IProductsGetData, IProductsProps, TProduct } from '@customTypes/product';
 import ProductsPageContent from '@productsPage/ProductsPageContent';
 import {
   ProductsPageHighlightedTitle,
@@ -15,10 +10,10 @@ import {
 } from '@productsPage/ProductsPage.styles';
 import GoBackButton from '@generic/buttons/GoBackButton';
 
-export async function getServerSideProps(): Promise<IProductsOnProductsPage> {
+export async function getServerSideProps(): Promise<IProductsGetData> {
   const resJson = await getPageData();
   const pageData: IPageData = mapData(resJson);
-  const productsData: TProductOnProductsPage[] = sortDataForProductsPage(pageData.product);
+  const productsData: TProduct[] = sortProductsData(pageData.product);
 
   return {
     props: {
@@ -29,9 +24,7 @@ export async function getServerSideProps(): Promise<IProductsOnProductsPage> {
   };
 }
 
-export default function Products({
-  pageData: { productsData },
-}: IProductsOnProductsPageProps): JSX.Element {
+export default function Products({ pageData: { productsData } }: IProductsProps): JSX.Element {
   return (
     <>
       <GoBackButton />

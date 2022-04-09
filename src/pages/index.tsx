@@ -5,33 +5,35 @@ import HomepageAboutUs from '@homepage/HomepageAboutUs';
 import getPageData from '@clients/contentful/getPageData';
 import mapData, { getProductOnHomepage } from '@clients/contentful/dataMapper';
 import {
-  IProductOnHomepageProps,
+  IProductHomepageProps,
   IPageData,
   TProduct,
-  IProductOnHomepage,
+  IProductHomepageGetData,
 } from '@customTypes/product';
 import Product from '@generic/Product';
 
-export async function getServerSideProps(): Promise<IProductOnHomepage> {
+export async function getServerSideProps(): Promise<IProductHomepageGetData> {
   const resJson = await getPageData();
   const pageData: IPageData = mapData(resJson);
 
-  const product: TProduct = getProductOnHomepage(pageData.product);
+  const productData: TProduct = getProductOnHomepage(pageData.product);
 
   return {
     props: {
       pageData: {
-        product,
+        productData,
       },
     },
   };
 }
 
-export default function Homepage({ pageData: { product } }: IProductOnHomepageProps): JSX.Element {
+export default function Homepage({
+  pageData: { productData },
+}: IProductHomepageProps): JSX.Element {
   return (
     <>
       <HomepageHero />
-      <Product productData={product} isOnHomepage />
+      <Product productData={productData} isOnHomepage />
       <HomepageAboutUs />
     </>
   );

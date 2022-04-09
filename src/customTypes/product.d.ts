@@ -27,11 +27,9 @@ export enum EAvailableSizes {
 }
 
 export type TProduct = {
-  productId;
-  productImage0: TProductImage;
-  productImage1?: TProductImage;
-  productImage2?: TProductImage;
-  productImage3?: TProductImage;
+  productId: string;
+  productDate: string;
+  productImages: TProductImages;
   productName: string;
   productDescription: string;
   productIsOnSale: boolean;
@@ -56,39 +54,20 @@ export interface IProductNotFound {
   notFound: boolean;
 }
 
-export type TProductOnProductsPage = {
-  productId: number;
-  productName: string;
-  productCollection: string;
-  productIsOnSale: boolean;
-  productPrice: number;
-  productOldPrice: number;
-  productImages: TProductImages;
-};
-
-export interface IProductsOnProductsPageProps {
+export interface IProductHomepageProps {
   pageData: {
-    productsData: TProductOnProductsPage[];
+    productData: TProduct;
   };
 }
-export interface IProductsOnProductsPage {
-  props: IProductsOnProductsPageProps;
+export interface IProductHomepageGetData {
+  props: IProductHompegeProps;
 }
 
-export type TProductOnHomepage = {
-  productId: number;
-  productName: string;
-  productIsOnSale: boolean;
-  productPrice: number;
-  productOldPrice: number;
-  productImages: TProductImages;
-};
-
-export interface IProductOnHomepageProps {
+export interface IProductsProps {
   pageData: {
-    product: TProduct;
+    productsData: TProduct[];
   };
 }
-export interface IProductOnHomepage {
-  props: IProductOnHomepageProps;
+export interface IProductsGetData {
+  props: IProductsProps;
 }

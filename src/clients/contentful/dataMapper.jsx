@@ -72,40 +72,46 @@ export function convertRichTextToReactComponent(Component, richText) {
 }
 
 export function getProductById(productsArray, desiredProductId) {
-  return productsArray.find((product) => product.productId == desiredProductId) || null;
+  const sortedProductsArray = sortProductsData(productsArray);
+
+  return sortedProductsArray.find((product) => product.productId == desiredProductId) || null;
+}
+
+export function sortProductsData(productsArray) {
+  const sortedProductsArray = productsArray.map((product) => ({
+    ...product,
+    productImages: [
+      product.productImage0,
+      product.productImage1 || null,
+      product.productImage2 || null,
+      product.productImage3 || null,
+    ],
+  }));
+
+  sortedProductsArray.forEach((sortedProduct) => {
+    delete sortedProduct.productImage0;
+    delete sortedProduct.productImage1;
+    delete sortedProduct.productImage2;
+    delete sortedProduct.productImage3;
+  });
+  return [...sortedProductsArray];
 }
 
 export function getProductOnHomepage(productsArray) {
-  return productsArray.find((product) => product.productIsOnHomepage);
-}
-export function sortDataForProductsPage(productsArray) {
-  return productsArray.map(
-    ({
-      productId,
-      productName,
-      productCollection,
-      productIsOnSale,
-      productPrice,
-      productOldPrice,
-      productImage0,
-      productImage1,
-      productImage2,
-      productImage3,
-    }) => ({
-      productId,
-      productName,
-      productCollection,
-      productIsOnSale,
-      productPrice,
-      productOldPrice: productOldPrice || null,
-      productImages: [
-        productImage0,
-        productImage1 || null,
-        productImage2 || null,
-        productImage3 || null,
-      ],
-    }),
-  );
+  const product = productsArray.find((product) => product.productIsOnHomepage);
+  product.productImages = [
+    product.productImage0,
+    product.productImage1 || null,
+    product.productImage2 || null,
+    product.productImage3 || null,
+  ];
+
+  delete product.productImage0;
+  delete product.productImage1;
+  delete product.productImage2;
+  delete product.productImage3;
+
+  return product;
 }
 
 export default function mapData(data) {

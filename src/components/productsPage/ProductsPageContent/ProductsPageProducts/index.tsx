@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { TProductOnProductsPage } from '@customTypes/product';
+import { TProduct } from '@customTypes/product';
 import ProductImages from '@generic/Product/ProductImages';
 
 import {
@@ -14,7 +14,7 @@ import {
 } from './ProductsPageProducts.styles';
 
 interface IProductsPageProducts {
-  products: TProductOnProductsPage[];
+  products: TProduct[];
 }
 
 export default function ProductsPageProducts({ products }: IProductsPageProducts): JSX.Element {
@@ -29,7 +29,7 @@ export default function ProductsPageProducts({ products }: IProductsPageProducts
             productPrice,
             productOldPrice,
             productImages,
-          }: TProductOnProductsPage) => (
+          }: TProduct) => (
             <Link href={`./products/${productId}`} passHref key={productName}>
               <ProductsPageProductWrapper>
                 <ProductImages productImagesData={productImages} isOnProductsPage />

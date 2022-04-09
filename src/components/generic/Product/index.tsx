@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 import { convertRichTextToReactComponent } from '@clients/contentful/dataMapper';
-import { TProductImage, TProduct, EAvailableSizes } from '@customTypes/product';
+import { TProduct, EAvailableSizes } from '@customTypes/product';
 import HighlightedTitle from '@generic/HighlightedTitle';
 import InputLabel from '@generic/inputs/InputLabel.styles';
 import SelectInput from '@generic/inputs/SelectInput.styles';
@@ -33,25 +33,15 @@ interface IProduct {
 export default function Product({ productData, isOnHomepage }: IProduct): JSX.Element {
   const {
     productId,
-    productImage0,
-    productImage1,
-    productImage2,
-    productImage3,
     productName,
     productDescription,
     productIsOnSale,
+    productImages,
     productPrice,
     productOldPrice,
     productAvailableColors,
     productAvailableSizes,
   }: TProduct = productData;
-
-  const productImages: [
-    TProductImage,
-    TProductImage | undefined,
-    TProductImage | undefined,
-    TProductImage | undefined,
-  ] = [productImage0, productImage1, productImage2, productImage3];
 
   const [productQuantity, setProductQuantity] = useState<number>(1);
 
