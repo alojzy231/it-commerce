@@ -14,7 +14,7 @@ type TPage = {
 const subpages: TSubpage[] = PRODUCTS_COLLECTIONS.map(
   (productCollection: string): TSubpage => ({
     name: productCollection,
-    url: `/collections/${productCollection.toLowerCase()}`,
+    url: `/products?collection=${productCollection}`,
   }),
 );
 
