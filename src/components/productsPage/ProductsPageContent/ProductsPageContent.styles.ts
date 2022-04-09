@@ -16,7 +16,7 @@ export const ProductsPageContentContainer = styled.div`
 export const ProductsPageSearchInputsContainer = styled.div`
   width: fit-content;
 
-  margin: 6.4rem 0 calc(6.4rem - 5%) auto;
+  margin: 6.4rem 0 0 auto;
 
   display: flex;
 
@@ -27,6 +27,16 @@ export const ProductsPageSearchInputsContainer = styled.div`
 
 export const ProductsPageFilterByButton = styled(FilterByButton)`
   margin: auto 0 auto 4.2rem;
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    margin-left: 1.8rem;
+  }
+`;
+
+export const ProductsPageProductsNotFound = styled.h3`
+  margin-top: 2rem;
+
+  text-align: center;
 
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     margin-left: 1.8rem;

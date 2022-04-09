@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
 import {
-  EFilterOptions,
+  ESortByOptions,
   EProductsCollections,
   EProductsSizes,
-  FILTER_OPTIONS,
+  SORT_BY_OPTIONS,
   PRODUCTS_COLLECTIONS,
   PRODUCTS_SIZES,
 } from '@consts/products';
 import SelectInput from '@generic/inputs/SelectInput.styles';
 import { TMinMaxRangeInputValues } from '@generic/inputs/MinMaxRangeInput';
+import CheckboxInput from '@generic/inputs/CheckboxInput.styles';
 
 import GenericModalWindow from '../GenericModalWindow';
 
@@ -26,13 +27,14 @@ interface IFilterByModalWindow {
 }
 
 interface IFormValues {
-  sortBy: EFilterOptions;
+  sortBy: ESortByOptions;
   collection: EProductsCollections | string;
   size: EProductsSizes | string;
   priceRange: {
     minValue: number;
     maxValue: number;
   };
+  onSale: boolean;
 }
 
 const RANGE_INPUT_MIN_VALUE = 0;
@@ -44,13 +46,14 @@ export default function FilterByModalWindow({
   const router = useRouter();
 
   const [formValues, setFormValues] = useState<IFormValues>({
-    sortBy: EFilterOptions.newest,
+    sortBy: ESortByOptions.newest,
     collection: '',
     size: '',
     priceRange: {
       minValue: RANGE_INPUT_MIN_VALUE,
       maxValue: RANGE_INPUT_MAX_VALUE,
     },
+    onSale: false,
   });
 
   const handleInputChange = (
@@ -58,15 +61,18 @@ export default function FilterByModalWindow({
     name: string,
   ): void => {
     let newValue = target.value;
+
     if (name === 'filterBy') {
-      newValue = EFilterOptions[newValue];
+      newValue = ESortByOptions[newValue];
     } else if (name === 'collection') {
       newValue = EProductsCollections[newValue];
     } else if (name === 'size') {
       newValue = EProductsSizes[newValue];
     }
 
-    setFormValues((prevState) => ({ ...prevState, [name]: newValue }));
+    const finaValue = name === 'onSale' ? (target as HTMLInputElement).checked : newValue;
+
+    setFormValues((prevState) => ({ ...prevState, [name]: finaValue }));
   };
 
   const handleChangeRangeInput = (getValues: TMinMaxRangeInputValues): void =>
@@ -99,16 +105,16 @@ export default function FilterByModalWindow({
     <GenericModalWindow title="Filter by">
       <FilterByModalWindowForm onSubmit={handleSubmit}>
         <FilterByModalWindowLabel rowspan>
-          Filter by:
+          Sort by:
           <SelectInput
             onChange={(event: React.ChangeEvent<HTMLSelectElement>): void =>
               handleInputChange(event, 'sortBy')
             }
           >
-            {FILTER_OPTIONS.map(
-              (productCollection: string): JSX.Element => (
-                <option key={productCollection} value={productCollection}>
-                  {productCollection}
+            {SORT_BY_OPTIONS.map(
+              (sortByOption: string): JSX.Element => (
+                <option key={sortByOption} value={ESortByOptions[sortByOption]}>
+                  {sortByOption}
                 </option>
               ),
             )}
@@ -160,6 +166,14 @@ export default function FilterByModalWindow({
           getValues={handleChangeRangeInput}
         />
 
+        <FilterByModalWindowLabel>
+          Is on sale
+          <CheckboxInput
+            onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+              handleInputChange(event, 'onSale')
+            }
+          />
+        </FilterByModalWindowLabel>
         <FilterByModalWindowButton>Filter</FilterByModalWindowButton>
       </FilterByModalWindowForm>
     </GenericModalWindow>

@@ -123,3 +123,7 @@ export const MinMaxRangeInputRangeLabel = styled.h4`
     ${Header5};
   }
 `;
+
+export const MinMaxRangeInputDontWrap = styled.span`
+  white-space: nowrap;
+`;

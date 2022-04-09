@@ -13,6 +13,7 @@ import {
   MinMaxRangeInputRangeProgressbar,
   MinMaxRangeInputRangeLabel,
   MinMaxRangeInputRangeLabelsContainer,
+  MinMaxRangeInputDontWrap,
 } from './MinMaxRangeInput.styles';
 
 export type TMinMaxRangeInputValues = {
@@ -53,22 +54,26 @@ export default function MinMaxRangeInput({
     <MinMaxRangeInputContainer className={className}>
       <InputLabel>
         Min:
-        <MinMaxRangeNumberInput
-          step={0.01}
-          value={rangeInput.currentValues.minValue}
-          onChange={handleMinValueChange}
-        />
-        $
+        <MinMaxRangeInputDontWrap>
+          <MinMaxRangeNumberInput
+            step={0.01}
+            value={rangeInput.currentValues.minValue}
+            onChange={handleMinValueChange}
+          />
+          $
+        </MinMaxRangeInputDontWrap>
       </InputLabel>
 
       <InputLabel>
         Max:
-        <MinMaxRangeNumberInput
-          step={0.01}
-          value={rangeInput.currentValues.maxValue}
-          onChange={handleMaxValueChange}
-        />
-        $
+        <MinMaxRangeInputDontWrap>
+          <MinMaxRangeNumberInput
+            step={0.01}
+            value={rangeInput.currentValues.maxValue}
+            onChange={handleMaxValueChange}
+          />
+          $
+        </MinMaxRangeInputDontWrap>
       </InputLabel>
       <MinMaxRangeInputRangeContainer>
         <MinMaxRangeInputRangeProgressbar position={rangeInput.progressbarPosition} />

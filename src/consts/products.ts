@@ -1,32 +1,30 @@
-export enum EFilterOptions {
+export enum ESortByOptions {
   'newest',
   'oldest',
-  'on sale',
   'price by lowest',
   'price by highest',
 }
 
 export enum EProductsCollections {
-  'CSS',
-  'DevOps',
-  'Linux',
-  'HTML',
+  CSS = 'CSS',
+  DevOps = 'DevOps',
+  Linux = 'Linux',
+  HTML = 'HTML',
 }
 
 export enum EProductsSizes {
-  'XS',
-  'S',
-  'M',
-  'L',
-  'XL',
-  'XXL',
-  'XXXL',
+  XS = 'XS',
+  S = 'S',
+  M = 'M',
+  L = 'L',
+  XL = 'XL',
+  XXL = 'XXL',
+  XXXL = 'XXXL',
 }
 
-export const FILTER_OPTIONS: string[] = [
+export const SORT_BY_OPTIONS: string[] = [
   'newest',
   'oldest',
-  'on sale',
   'price by lowest',
   'price by highest',
 ];

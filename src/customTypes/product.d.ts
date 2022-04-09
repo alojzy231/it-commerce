@@ -1,3 +1,5 @@
+import { EProductsCollections } from '@consts/products';
+
 export interface IProductContext {
   query: {
     productId: string;
@@ -17,15 +19,6 @@ export type TProductImages = [
   TProductOptionalImage,
 ];
 
-export enum EAvailableSizes {
-  XS,
-  S,
-  M,
-  L,
-  XL,
-  XXL,
-}
-
 export type TProduct = {
   productId: string;
   productDate: string;
@@ -36,8 +29,8 @@ export type TProduct = {
   productPrice: number;
   productOldPrice: number;
   productAvailableColors: string[];
-  productAvailableSizes: EAvailableSizes[];
-  images: [];
+  productAvailableSizes: EProductsSizes[];
+  productCollection: EProductsCollections;
 };
 export interface IPageData {
   product?: TProduct[];
