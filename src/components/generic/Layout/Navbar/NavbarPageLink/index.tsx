@@ -30,9 +30,14 @@ export default function NavbarPageLink({
   return (
     <NavbarPageLinkWrapper isSidebar={isSidebar}>
       <NavbarPageLinkContainer>
-        <Link href={href} passHref>
+        {showSubmenu ? (
           <NavbarPageLinkName>{children}</NavbarPageLinkName>
-        </Link>
+        ) : (
+          <Link href={href} passHref>
+            <NavbarPageLinkName>{children}</NavbarPageLinkName>
+          </Link>
+        )}
+
         {showChaviconDown && <NavbarPageLinkChaviconIcon />}
       </NavbarPageLinkContainer>
 

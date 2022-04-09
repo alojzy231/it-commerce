@@ -21,11 +21,11 @@ const subpages: TSubpage[] = PRODUCTS_COLLECTIONS.map(
 const PAGES_NAMES: TPage[] = [
   {
     name: 'Sales',
-    url: '/sales',
+    url: '/products?onSale=true',
   },
   {
     name: 'Collections',
-    url: '/collections',
+    url: '*',
     subpages,
   },
   {
