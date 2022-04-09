@@ -26,6 +26,8 @@ export const SubmenuOption = styled.li`
   text-decoration: none;
   color: ${({ theme: { colors } }): string => colors.black};
 
+  user-select: none;
+
   &:hover {
     color: ${({ theme: { colors } }): string => colors.white};
     background-color: ${({ theme: { colors } }): string => colors.selected};

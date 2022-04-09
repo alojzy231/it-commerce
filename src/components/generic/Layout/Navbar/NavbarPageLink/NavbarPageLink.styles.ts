@@ -22,6 +22,8 @@ export const NavbarPageLinkName = styled.a`
   text-decoration: none;
   color: ${({ theme: { colors } }): string => colors.black};
 
+  user-select: none;
+
   &:active {
     opacity: 0.6;
   }
