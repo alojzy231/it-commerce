@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 
 import { openModal } from '@redux/actions/modalActions';
@@ -13,10 +14,14 @@ interface ILayoutProps {
 }
 
 export default function Layout({ children }: ILayoutProps): JSX.Element {
+  const { pathname } = useRouter();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(openModal('disclaimer'));
+    if (pathname === '/') {
+      dispatch(openModal('disclaimer'));
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
