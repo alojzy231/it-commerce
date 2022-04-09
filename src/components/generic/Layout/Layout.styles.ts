@@ -10,6 +10,6 @@ export const LayoutWrapper = styled.div`
 export const LayoutMain = styled.main`
   width: 100%;
   max-width: ${({ theme: { medias } }): string => medias.desktop};
-
+  min-height: 100vh;
   margin: 0 auto;
 `;
