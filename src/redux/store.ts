@@ -2,11 +2,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createStore, Store } from 'redux';
 
-import { saveShoppingCartState } from './loadShoppingCartState';
+import { loadShoppingCartState, saveShoppingCartState } from './loadShoppingCartState';
 import rootReducer from './reducers';
 
-// const shoppingCartState = loadShoppingCartState();
 const enhancers: any[] = [];
+const shoppingCartState = loadShoppingCartState();
 
 if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
   const devToolsExtension =
@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
 }
 
 const configureStore = (): Store => {
-  const store = createStore(rootReducer, ...enhancers);
+  const store = createStore(rootReducer, shoppingCartState, ...enhancers);
 
   store.subscribe(() => {
     saveShoppingCartState(store.getState().shoppingCart);

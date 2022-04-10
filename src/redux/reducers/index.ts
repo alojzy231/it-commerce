@@ -4,10 +4,6 @@ import isMobileReducer from './isMobileReducer';
 import modalReducer from './modalReducer';
 import shoppingCartReducer from './shoppingCartReducer';
 
-export interface IRootState {
-  isMobile: boolean;
-}
-
 const rootReducer = combineReducers({
   isMobile: isMobileReducer,
   modal: modalReducer,
