@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 
 import { TProductImage, TProductImages } from '@customTypes/product';
 import { openModal } from '@redux/actions/modalActions';
@@ -22,9 +23,13 @@ export default function ProductImages({
   isOnProductsPage,
 }: IProductImages): JSX.Element {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const [productImagesArray, setProductImagesArray] = useState<TProductImages>(productImagesData);
 
+  useEffect(() => {
+    setProductImagesArray(productImagesData);
+  }, [productImagesArray, productImagesData, router]);
   const handleImageMagnifying = (): void => {
     if (!isOnProductsPage) {
       dispatch(openModal('magnifyImage', productImagesArray[0]));
@@ -51,6 +56,7 @@ export default function ProductImages({
         alt={productImagesArray[0].title}
         onClick={handleImageMagnifying}
         isOnProductsPage={isOnProductsPage}
+        key={productImagesArray[0].url}
       />
 
       <ProductImagesSmallImagesContainer isOnProductsPage={isOnProductsPage}>
@@ -60,6 +66,7 @@ export default function ProductImages({
             src={productImagesArray[1].url}
             alt={productImagesArray[1].title}
             isOnProductsPage={isOnProductsPage}
+            key={productImagesArray[1].url}
           />
         ) : (
           <ProductImagesSmallImageFiller />
@@ -70,6 +77,7 @@ export default function ProductImages({
             src={productImagesArray[2].url}
             alt={productImagesArray[2].title}
             isOnProductsPage={isOnProductsPage}
+            key={productImagesArray[2].url}
           />
         ) : (
           <ProductImagesSmallImageFiller />
@@ -80,6 +88,7 @@ export default function ProductImages({
             src={productImagesArray[3].url}
             alt={productImagesArray[3].title}
             isOnProductsPage={isOnProductsPage}
+            key={productImagesArray[3].url}
           />
         ) : (
           <ProductImagesSmallImageFiller />
