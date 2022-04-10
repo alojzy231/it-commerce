@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
 import PAGES_NAMES from '@consts/pagesNames';
-import { IRootState } from '@redux/reducers';
+import { TRootState } from '@redux/reducers';
 
 import HamburgerMenu from './HamburgerMenu';
 import ShoppingCartButton from './ShoppingCartButton';
@@ -16,7 +16,7 @@ import {
 } from './Navbar.styles';
 
 export default function Navbar(): JSX.Element {
-  const isMobile: boolean = useSelector((state: IRootState) => state.isMobile);
+  const isMobile: boolean = useSelector((state: TRootState) => state.isMobile);
 
   return (
     <NavbarWrapper>
