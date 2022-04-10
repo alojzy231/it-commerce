@@ -9,30 +9,36 @@ export type TShoppingCartProduct = {
   color?: string;
   size?: EProductsSizes;
   quantity?: number;
+};
+
+type IShoppingCartProduct = {
+  product: TShoppingCartProduct;
   newQuantity?: number;
 };
 
 export interface IProductShoppingCartAction {
   type: string;
-  payload: TShoppingCartProduct;
+  payload: IShoppingCartProduct;
 }
 
 export const addItemToShoppingCart = (
   product: TShoppingCartProduct,
 ): IProductShoppingCartAction => ({
   type: ADD_ITEM_TO_SHOPPING_CART,
-  payload: product,
+  payload: { product },
 });
 
-export const removeItemFromShoppingCart = (productId: string): IProductShoppingCartAction => ({
+export const removeItemFromShoppingCart = (
+  product: TShoppingCartProduct,
+): IProductShoppingCartAction => ({
   type: REMOVE_ITEM_FROM_SHOPPING_CART,
-  payload: { productId },
+  payload: { product },
 });
 
 export const changeQuantityOfItemInShoppingCart = (
-  productId: string,
+  product: TShoppingCartProduct,
   newQuantity: number,
 ): IProductShoppingCartAction => ({
   type: CHANGE_QUANTITY_OF_ITEM_IN_SHOPPING_CART,
-  payload: { productId, newQuantity },
+  payload: { product, newQuantity },
 });

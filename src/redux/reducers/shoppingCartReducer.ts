@@ -10,18 +10,24 @@ const initialState: TShoppingCartProduct[] | null = [];
 
 const removeItem = (
   shoppingCartState: TShoppingCartProduct[],
-  removeProductId: string,
+  removeProduct: TShoppingCartProduct,
 ): TShoppingCartProduct[] =>
-  shoppingCartState.filter((product) => product.productId !== removeProductId);
-
+  shoppingCartState.filter(
+    (product) =>
+      !(
+        product.productId === removeProduct.productId &&
+        product.size === removeProduct.size &&
+        product.color === removeProduct.color
+      ),
+  );
 const changeQuantityOfItem = (
   shoppingCartState: TShoppingCartProduct[],
-  productId: string,
+  changedProduct: TShoppingCartProduct,
   newQuantity: number,
 ): TShoppingCartProduct[] => {
   const newState: TShoppingCartProduct[] = [...shoppingCartState];
 
-  const index = newState.findIndex((product) => product.productId === productId);
+  const index = newState.findIndex((product) => product.productId === changedProduct.productId);
 
   newState[index].quantity = newQuantity;
 
@@ -58,11 +64,11 @@ const shoppingCartReducer = (
 ): TShoppingCartProduct[] => {
   switch (action.type) {
     case ADD_ITEM_TO_SHOPPING_CART:
-      return addItem(state, action.payload);
+      return addItem(state, action.payload.product);
     case REMOVE_ITEM_FROM_SHOPPING_CART:
-      return removeItem(state, action.payload.productId);
+      return removeItem(state, action.payload.product);
     case CHANGE_QUANTITY_OF_ITEM_IN_SHOPPING_CART:
-      return changeQuantityOfItem(state, action.payload.productId, action.payload.newQuantity || 1);
+      return changeQuantityOfItem(state, action.payload.product, action.payload.newQuantity || 1);
     default:
       return state;
   }
