@@ -7,8 +7,6 @@ import rootReducer from './reducers';
 
 const enhancers: any[] = [];
 
-const persistedState = loadShoppingCartState();
-
 if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
   const devToolsExtension =
     (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__();
@@ -19,7 +17,9 @@ if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
 }
 
 const configureStore = (): Store => {
-  const store = createStore(rootReducer, persistedState, ...enhancers);
+  const shoppingCartState = loadShoppingCartState();
+
+  const store = createStore(rootReducer, shoppingCartState, ...enhancers);
   store.subscribe(() => {
     saveShoppingCartState(store.getState().shoppingCart);
   });
