@@ -12,10 +12,11 @@
 
 ## About The Project
 
-IT-Commerce is a website of a clothing company where you can search and order their products.
+IT-Commerce is a website of a clothing company where you can search and order their products. The shopping cart state is saved to the local storage to persist its state between closing and opening the website.
 
 ### Built With
 
+- [TypeScript](https://www.typescriptlang.org/)
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org)
 - [styled-components](https://styled-components.com/)
