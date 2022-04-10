@@ -72,14 +72,20 @@ export const ShoppingCartItemImage = styled.img`
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     margin-top: 2rem;
   }
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.smallMobile}) {
+    height: 20rem;
+  }
 `;
 export const ShoppingCartItemName = styled.h4`
   max-width: 20rem;
 
+  font-weight: bold;
   text-align: center;
 
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     ${Header5};
+    font-weight: bold;
   }
 `;
 export const ShoppingCartItemDetails = styled.h5<IShoppingCartItemDetails>`
