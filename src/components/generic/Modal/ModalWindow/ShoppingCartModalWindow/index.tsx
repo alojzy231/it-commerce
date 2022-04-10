@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { TRootState } from '@redux/reducers';
+import { TShoppingCartProduct } from '@customTypes/product';
 
 import GenericModalWindow from '../GenericModalWindow';
 
@@ -21,7 +22,7 @@ export default function ShoppingCartModalWindow(): JSX.Element {
         {shoppinCartItems.length > 0 ? (
           <>
             {shoppinCartItems.map(
-              (shoppingCartItem): JSX.Element => (
+              (shoppingCartItem: TShoppingCartProduct): JSX.Element => (
                 <ShoppingCartItem
                   shoppingCartProduct={shoppingCartItem}
                   key={`${shoppingCartItem.productId}-${shoppingCartItem.size}-${shoppingCartItem.color}`}

@@ -1,5 +1,3 @@
-import { Reducer } from 'react';
-
 import { TShoppingCartProduct } from '@customTypes/product';
 import {
   ADD_ITEM_TO_SHOPPING_CART,
@@ -60,10 +58,10 @@ const addItem = (
   return [...newState];
 };
 
-const shoppingCartReducer: Reducer<TShoppingCartProduct[], IProductShoppingCartAction> = (
-  state = initialState,
-  action,
-) => {
+const shoppingCartReducer = (
+  state: TShoppingCartProduct[] = initialState,
+  action: IProductShoppingCartAction,
+): TShoppingCartProduct[] => {
   switch (action.type) {
     case ADD_ITEM_TO_SHOPPING_CART:
       return addItem(state, action.payload.product);

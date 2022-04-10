@@ -1,5 +1,3 @@
-import { Reducer } from 'react';
-
 import TModalType from '@customTypes/modal';
 import {
   CLOSE_MODAL,
@@ -22,10 +20,10 @@ const initialState: IState = {
   modalType: 'disclaimer',
 };
 
-const isMobileReducer: Reducer<IState, IOpenModalAction | ICloseModalAction> = (
-  state = initialState,
-  action,
-) => {
+const modalReducer = (
+  state: IState = initialState,
+  action: IOpenModalAction | ICloseModalAction,
+): IState => {
   switch (action.type) {
     case OPEN_MODAL:
       return action.payload;
@@ -36,4 +34,4 @@ const isMobileReducer: Reducer<IState, IOpenModalAction | ICloseModalAction> = (
   }
 };
 
-export default isMobileReducer;
+export default modalReducer;
