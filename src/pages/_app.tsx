@@ -11,9 +11,9 @@ import theme from '@styles/theme';
 import IsMobileProvider from '@contextProviders/isMobileProvider';
 import Layout from '@generic/Layout';
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-  const store = configureStore();
+const store = configureStore();
 
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
       <Head>
