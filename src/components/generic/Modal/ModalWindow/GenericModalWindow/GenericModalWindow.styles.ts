@@ -4,13 +4,11 @@ import { Header5 } from '@styles/typography';
 
 const slideInAnimation = keyframes`
   0%{
-  transform: translateY(-100%);
-
+    top: -100%;
   }
 
   100%{
-      transform: translateY(0%);
-
+      top:2rem;
   }
 `;
 
@@ -18,9 +16,11 @@ export const GenericModalWindowContainer = styled.div`
   max-width: 88rem;
   min-width: 20rem;
 
-  margin: 2rem auto;
+  position: absolute;
+  left: 50%;
 
-  position: relative;
+  transform: translateX(-50%);
+
   z-index: 1;
 
   animation: ${slideInAnimation} 0.3s ease-out;
