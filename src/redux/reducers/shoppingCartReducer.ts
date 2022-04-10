@@ -33,7 +33,13 @@ const addItem = (
   newProduct: TShoppingCartProduct,
 ): TShoppingCartProduct[] => {
   const newState: TShoppingCartProduct[] = [...shoppingCartState];
-  const index = newState.findIndex((product) => product.productId === newProduct.productId);
+  const index = newState.findIndex(
+    (product) =>
+      product.productId === newProduct.productId &&
+      product.size === newProduct.size &&
+      product.color === newProduct.color,
+  );
+
   if (index === -1) {
     return [...newState, newProduct];
   }
