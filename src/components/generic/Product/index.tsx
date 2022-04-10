@@ -96,6 +96,7 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
         productName,
         productImage: productImages[0],
         ...productInputsValues,
+        quantity: productInputsValues.quantity || 1,
       }),
     );
   };
@@ -107,6 +108,7 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
         productName,
         productImage: productImages[0],
         ...productInputsValues,
+        quantity: productInputsValues.quantity || 1,
       }),
     );
     dispatch(openModal('shoppingCart'));
