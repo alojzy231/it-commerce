@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
 
 import { TProductImage, TProductImages } from '@customTypes/product';
 import { openModal } from '@redux/actions/modalActions';
@@ -23,13 +22,12 @@ export default function ProductImages({
   isOnProductsPage,
 }: IProductImages): JSX.Element {
   const dispatch = useDispatch();
-  const router = useRouter();
 
   const [productImagesArray, setProductImagesArray] = useState<TProductImages>(productImagesData);
 
   useEffect(() => {
     setProductImagesArray(productImagesData);
-  }, [productImagesArray, productImagesData, router]);
+  }, [productImagesArray, productImagesData]);
   const handleImageMagnifying = (): void => {
     if (!isOnProductsPage) {
       dispatch(openModal('magnifyImage', productImagesArray[0]));
