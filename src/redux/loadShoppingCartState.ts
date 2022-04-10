@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { TShoppingCartProduct } from './actions/shoppingCartActions';
+import { TShoppingCartProduct } from '@customTypes/product';
 
 export const loadShoppingCartState = (): any => {
   try {
