@@ -55,7 +55,7 @@ const addItem = (
 const shoppingCartReducer = (
   state: TShoppingCartProduct[] = initialState,
   action: IProductShoppingCartAction,
-): TShoppingCartProduct[] | null => {
+): TShoppingCartProduct[] => {
   switch (action.type) {
     case ADD_ITEM_TO_SHOPPING_CART:
       return addItem(state, action.payload);

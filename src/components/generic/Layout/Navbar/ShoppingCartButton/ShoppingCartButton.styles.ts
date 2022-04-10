@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-const AccountButtonContainer = styled.li`
-  margin-right: 3.2rem;
+const ShoppingCartButtonContainer = styled.li`
+  position: relative;
 
   list-style-type: none;
 
@@ -10,4 +10,4 @@ const AccountButtonContainer = styled.li`
   }
 `;
 
-export default AccountButtonContainer;
+export default ShoppingCartButtonContainer;

@@ -6,7 +6,6 @@ import PAGES_NAMES from '@consts/pagesNames';
 import { IRootState } from '@redux/reducers';
 
 import HamburgerMenu from './HamburgerMenu';
-import AccountButton from './AccountButton';
 import ShoppingCartButton from './ShoppingCartButton';
 import NavbarPageLink from './NavbarPageLink';
 import {
@@ -36,7 +35,6 @@ export default function Navbar(): JSX.Element {
                 </NavbarPageLink>
               ))}
               <ShoppingCartButton />
-              <AccountButton />
             </>
           )}
         </NavbarRightSection>

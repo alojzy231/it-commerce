@@ -4,7 +4,6 @@ import CloseIcon from '@icons/CloseIcon';
 import PAGES_NAMES from '@consts/pagesNames';
 
 import ShoppingCartButton from '../ShoppingCartButton';
-import AccountButton from '../AccountButton';
 import NavbarPageLink from '../NavbarPageLink';
 
 import {
@@ -28,7 +27,6 @@ export default function Sidebar({ isOpened, closeSidebar }: ISidebar): JSX.Eleme
           <SidebarCloseButton icon={<CloseIcon />} onClick={closeSidebar} />
 
           <ShoppingCartButton />
-          <AccountButton />
         </SidebarTopRow>
         <SidebarPagesLinksContainer>
           {PAGES_NAMES.map(({ name, url, subpages }) => (
