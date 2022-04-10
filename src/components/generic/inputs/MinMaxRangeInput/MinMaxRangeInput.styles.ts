@@ -67,7 +67,8 @@ const inputRangeDefaultStyle = css`
 
   border: none;
 
-  &::-webkit-slider-thumb {
+  &::-webkit-slider-thumb,
+  &::-moz-range-thumb {
     appearance: none;
 
     height: 2rem;
@@ -78,6 +79,7 @@ const inputRangeDefaultStyle = css`
     pointer-events: auto;
 
     border-radius: 50%;
+    border: none;
 
     background-color: ${({ theme: { colors } }): string => colors.selected};
 
@@ -92,6 +94,17 @@ const inputRangeDefaultStyle = css`
 
       cursor: pointer;
     }
+  }
+
+  &::-webkit-slider-runnable-track,
+  &::-moz-range-track {
+    background: none;
+  }
+
+  &::-webkit-slider-runnable-track,
+  &::-webkit-slider-thumb,
+  & {
+    -webkit-appearance: none;
   }
 `;
 
