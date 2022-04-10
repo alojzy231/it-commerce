@@ -22,6 +22,11 @@ export default function DisclaimerModalWindow({
         All images come from the Internet and their source addresses are included in their alt
         attribute.
       </DisclaimerModalWindowText>
+      <DisclaimerModalWindowText>
+        The website is almost fully functional: you can search and filter products, also you can add
+        them to the shopping cart (you can walk through all stages you would on a normal e-commerce
+        website down to placing order).
+      </DisclaimerModalWindowText>
       <DisclaimerModalWindowButton onClick={handleCloseModal}>OK</DisclaimerModalWindowButton>
     </GenericModalWindow>
   );
