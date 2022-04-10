@@ -1,9 +1,9 @@
+import { TShoppingCartProduct } from '@customTypes/product';
 import {
   ADD_ITEM_TO_SHOPPING_CART,
   CHANGE_QUANTITY_OF_ITEM_IN_SHOPPING_CART,
   IProductShoppingCartAction,
   REMOVE_ITEM_FROM_SHOPPING_CART,
-  TShoppingCartProduct,
 } from '@redux/actions/shoppingCartActions';
 
 const initialState: TShoppingCartProduct[] | null = [];

@@ -1,15 +1,8 @@
-import { EProductsSizes } from '@consts/products';
+import { TShoppingCartProduct } from '@customTypes/product';
 
 export const ADD_ITEM_TO_SHOPPING_CART = 'shoppingCart/addItem';
 export const REMOVE_ITEM_FROM_SHOPPING_CART = 'shoppingCart/removeItem';
 export const CHANGE_QUANTITY_OF_ITEM_IN_SHOPPING_CART = 'shoppingCart/changeQuantityOfItem';
-
-export type TShoppingCartProduct = {
-  productId: string;
-  color?: string;
-  size?: EProductsSizes;
-  quantity?: number;
-};
 
 type IShoppingCartProduct = {
   product: TShoppingCartProduct;

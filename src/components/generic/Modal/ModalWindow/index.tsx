@@ -5,6 +5,7 @@ import TModalType from '@customTypes/modal';
 import DisclaimerModalWindow from './DisclaimerModalWindow';
 import MagnifyImageModalWindow from './MagnifyImageModalWindow';
 import FilterByModalWindow from './FilterByModalWindow';
+import ShoppingCartModalWindow from './ShoppingCartModalWindow';
 
 interface IModalWindow {
   modalType: TModalType;
@@ -22,6 +23,8 @@ export default function ModalWindow({
       return <MagnifyImageModalWindow handleCloseModal={handleCloseModal} />;
     case 'filterBy':
       return <FilterByModalWindow handleCloseModal={handleCloseModal} />;
+    case 'shoppingCart':
+      return <ShoppingCartModalWindow />;
     default:
       return null;
   }

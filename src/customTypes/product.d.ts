@@ -19,6 +19,15 @@ export type TProductImages = [
   TProductOptionalImage,
 ];
 
+export type TShoppingCartProduct = {
+  productId: string;
+  productName: string;
+  productImage: TProductImage;
+  color: string;
+  size: EProductsSizes;
+  quantity: number;
+};
+
 export type TProduct = {
   productId: string;
   productDate: string;

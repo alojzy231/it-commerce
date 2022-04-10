@@ -13,6 +13,7 @@ const slideInAnimation = keyframes`
 `;
 
 export const GenericModalWindowContainer = styled.div`
+  width: calc(100% - 2rem);
   max-width: 88rem;
   min-width: 20rem;
 

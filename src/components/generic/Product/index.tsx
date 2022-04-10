@@ -10,6 +10,7 @@ import InputLabel from '@generic/inputs/InputLabel.styles';
 import SelectInput from '@generic/inputs/SelectInput.styles';
 import GenericButton from '@generic/buttons/GenericButton';
 import { addItemToShoppingCart } from '@redux/actions/shoppingCartActions';
+import { openModal } from '@redux/actions/modalActions';
 
 import {
   ProductContainer,
@@ -89,11 +90,26 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
   };
 
   const handleAddToCart = (): void => {
-    dispatch(addItemToShoppingCart({ productId, ...productInputsValues }));
+    dispatch(
+      addItemToShoppingCart({
+        productId,
+        productName,
+        productImage: productImages[0],
+        ...productInputsValues,
+      }),
+    );
   };
 
   const handleBuyNow = (): void => {
-    // dispatch(changeQuantityOfItemInShoppingCart(productId, 30));
+    dispatch(
+      addItemToShoppingCart({
+        productId,
+        productName,
+        productImage: productImages[0],
+        ...productInputsValues,
+      }),
+    );
+    dispatch(openModal('shoppingCart'));
   };
 
   return (
