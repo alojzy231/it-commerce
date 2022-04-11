@@ -25,6 +25,7 @@ export type TShoppingCartProduct = {
   productImage: TProductImage;
   color: string;
   size: EProductsSizes;
+  price: number;
   quantity: number;
 };
 

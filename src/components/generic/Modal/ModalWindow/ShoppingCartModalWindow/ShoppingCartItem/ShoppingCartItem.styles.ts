@@ -4,8 +4,12 @@ import { Header5, Header6 } from '@styles/typography';
 import NumberInput from '@generic/inputs/NumberInput.styles';
 
 interface IShoppingCartItemDetails {
-  isQuantityColumn?: boolean;
+  isTextCentered?: boolean;
 }
+
+export const ShoppingCartItemSemiBoldtext = styled.span`
+  font-weight: 600;
+`;
 
 export const ShoppingCartItemContainer = styled.li`
   width: 100%;
@@ -20,7 +24,7 @@ export const ShoppingCartItemContainer = styled.li`
     border-top: 0.1rem solid ${({ theme: { colors } }): string => colors.black};
   }
 
-  @media (max-width: ${({ theme: { medias } }): string => medias.smallMobile}) {
+  @media (max-width: ${({ theme: { medias } }): string => medias.mediumMobile}) {
     flex-direction: column;
     align-items: center;
   }
@@ -34,8 +38,8 @@ export const ShoppingCartItemColumn = styled.div`
   justify-content: center;
 `;
 
-export const ShoppingCartItemGoToProductPage = styled.button`
-  margin-right: 1rem;
+export const ShoppingCartItemGoToProductPageButton = styled.button`
+  margin-right: 0.2rem;
 
   display: flex;
   align-items: center;
@@ -56,13 +60,16 @@ export const ShoppingCartItemGoToProductPage = styled.button`
   }
 
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
-    display: block;
+    width: 15.5rem;
+
     margin: auto 0.6rem auto 0;
+
+    display: block;
   }
 `;
 
 export const ShoppingCartItemImage = styled.img`
-  height: 10rem;
+  height: 9rem;
   aspect-ratio: 1 / 1;
 
   margin: 1rem 0;
@@ -73,12 +80,14 @@ export const ShoppingCartItemImage = styled.img`
     margin-top: 2rem;
   }
 
-  @media (max-width: ${({ theme: { medias } }): string => medias.smallMobile}) {
+  @media (max-width: ${({ theme: { medias } }): string => medias.mediumMobile}) {
     height: 20rem;
   }
 `;
 export const ShoppingCartItemName = styled.h4`
   max-width: 20rem;
+
+  margin-left: 0.5rem;
 
   font-weight: bold;
   text-align: center;
@@ -89,13 +98,13 @@ export const ShoppingCartItemName = styled.h4`
   }
 `;
 export const ShoppingCartItemDetails = styled.h5<IShoppingCartItemDetails>`
-  ${({ isQuantityColumn }): string => (isQuantityColumn ? 'text-align: center;' : '')};
+  ${({ isTextCentered }): string => (isTextCentered ? 'text-align: center;' : '')};
 
   @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
     ${Header6};
   }
 
-  @media (max-width: ${({ theme: { medias } }): string => medias.smallMobile}) {
+  @media (max-width: ${({ theme: { medias } }): string => medias.mediumMobile}) {
     margin: 1rem 0;
 
     text-align: center;
@@ -103,18 +112,35 @@ export const ShoppingCartItemDetails = styled.h5<IShoppingCartItemDetails>`
 `;
 
 export const ShoppingCartItemNumberInput = styled(NumberInput)`
-  width: 10rem;
+  width: 9rem;
+
   margin: 1rem auto 0;
 
-  @media (max-width: ${({ theme: { medias } }): string => medias.smallMobile}) {
+  ${Header5};
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.mediumMobile}) {
     margin-left: 0;
   }
 `;
 
-export const ShoppingCartItemRemove = styled.button`
-  margin: 0 1rem;
+export const ShoppingCartItemPrice = styled.span`
+  color: ${({ theme: { colors } }): string => colors.secondary};
+`;
+export const ShoppingCartItemTotalPrice = styled.span`
+  display: block;
 
-  ${Header5};
+  font-weight: bold;
+
+  text-align: center;
+
+  color: ${({ theme: { colors } }): string => colors.selected};
+`;
+
+export const ShoppingCartItemRemove = styled.button`
+  height: fit-content;
+  margin: auto 0;
+
+  ${Header6};
   text-decoration: underline;
 
   border: none;
@@ -137,7 +163,7 @@ export const ShoppingCartItemRemove = styled.button`
     ${Header6};
   }
 
-  @media (max-width: ${({ theme: { medias } }): string => medias.smallMobile}) {
+  @media (max-width: ${({ theme: { medias } }): string => medias.mediumMobile}) {
     margin: 1rem 0;
 
     text-align: center;

@@ -23,3 +23,16 @@ export const ShoppingCartModalItemsPlaceOrderButton = styled(GenericButton)`
     width: 100%;
   }
 `;
+
+export const ShoppingCartTotalPrice = styled.h3`
+  text-align: right;
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.mediumMobile}) {
+    ${Header4};
+
+    font-weight: bold;
+  }
+`;
+export const ShoppingCartTotalPriceValue = styled.span`
+  color: ${({ theme: { colors } }): string => colors.selected};
+`;

@@ -92,10 +92,11 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
   const handleAddToCart = (): void => {
     dispatch(
       addItemToShoppingCart({
+        ...productInputsValues,
         productId,
         productName,
+        price: productPrice,
         productImage: productImages[0],
-        ...productInputsValues,
         quantity: productInputsValues.quantity || 1,
       }),
     );
@@ -104,10 +105,11 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
   const handleBuyNow = (): void => {
     dispatch(
       addItemToShoppingCart({
+        ...productInputsValues,
         productId,
         productName,
+        price: productPrice,
         productImage: productImages[0],
-        ...productInputsValues,
         quantity: productInputsValues.quantity || 1,
       }),
     );

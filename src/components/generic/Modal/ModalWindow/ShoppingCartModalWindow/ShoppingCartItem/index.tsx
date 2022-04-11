@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 
@@ -13,26 +13,55 @@ import {
 import {
   ShoppingCartItemContainer,
   ShoppingCartItemColumn,
-  ShoppingCartItemGoToProductPage,
+  ShoppingCartItemGoToProductPageButton,
   ShoppingCartItemImage,
   ShoppingCartItemName,
   ShoppingCartItemDetails,
   ShoppingCartItemRemove,
   ShoppingCartItemNumberInput,
+  ShoppingCartItemPrice,
+  ShoppingCartItemTotalPrice,
+  ShoppingCartItemSemiBoldtext,
 } from './ShoppingCartItem.styles';
 
 interface IShoppingCartItem {
   shoppingCartProduct: TShoppingCartProduct;
+  indexInShoppingCart: number;
+  handleChangeTotalPrice: (newTotalPrice: number, indexInShoppingCart: number) => void;
 }
 
-export default function ShoppingCartItem({ shoppingCartProduct }: IShoppingCartItem): JSX.Element {
+interface ILocalValues {
+  quantity: number;
+  totalPriceOfItem: number;
+}
+
+export default function ShoppingCartItem({
+  shoppingCartProduct,
+  indexInShoppingCart,
+  handleChangeTotalPrice,
+}: IShoppingCartItem): JSX.Element {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const { productId, productName, productImage, color, size, quantity }: TShoppingCartProduct =
-    shoppingCartProduct;
+  const {
+    productId,
+    productName,
+    productImage,
+    color,
+    size,
+    price,
+    quantity,
+  }: TShoppingCartProduct = shoppingCartProduct;
 
-  const [localQuantity, setLocalQuantity] = useState<number>(quantity);
+  const [localValues, setLocalValues] = useState<ILocalValues>({
+    quantity,
+    totalPriceOfItem: quantity * price,
+  });
+
+  useEffect(() => {
+    handleChangeTotalPrice(localValues.totalPriceOfItem, indexInShoppingCart);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleImageClick = (): void => {
     dispatch(closeModal());
@@ -43,10 +72,16 @@ export default function ShoppingCartItem({ shoppingCartProduct }: IShoppingCartI
     const newQuantity: number = parseInt(target.value, 10);
 
     if (newQuantity >= 0 || Number.isNaN(newQuantity)) {
-      setLocalQuantity(newQuantity);
+      setLocalValues((prevState) => ({ ...prevState, quantity: newQuantity }));
     }
 
     if (newQuantity > 0) {
+      const newTotalPrice: number = Number((newQuantity * price).toFixed(2));
+
+      handleChangeTotalPrice(newTotalPrice, indexInShoppingCart);
+
+      setLocalValues((prevState) => ({ ...prevState, totalPriceOfItem: newTotalPrice }));
+
       dispatch(changeQuantityOfItemInShoppingCart(shoppingCartProduct, newQuantity));
     }
   };
@@ -56,18 +91,40 @@ export default function ShoppingCartItem({ shoppingCartProduct }: IShoppingCartI
 
   return (
     <ShoppingCartItemContainer>
-      <ShoppingCartItemGoToProductPage onClick={handleImageClick}>
+      <ShoppingCartItemGoToProductPageButton onClick={handleImageClick}>
         <ShoppingCartItemImage src={productImage.url} alt={productImage.title} />
         <ShoppingCartItemName>{productName}</ShoppingCartItemName>
-      </ShoppingCartItemGoToProductPage>
+      </ShoppingCartItemGoToProductPageButton>
       <ShoppingCartItemColumn>
-        <ShoppingCartItemDetails>Color: {color}</ShoppingCartItemDetails>
-        <ShoppingCartItemDetails>Size: {size}</ShoppingCartItemDetails>
+        <ShoppingCartItemDetails>
+          <ShoppingCartItemSemiBoldtext>Color:</ShoppingCartItemSemiBoldtext> {color}
+        </ShoppingCartItemDetails>
+        <ShoppingCartItemDetails>
+          <ShoppingCartItemSemiBoldtext>Size:</ShoppingCartItemSemiBoldtext> {size}
+        </ShoppingCartItemDetails>
+        <ShoppingCartItemDetails>
+          <ShoppingCartItemSemiBoldtext>Price:</ShoppingCartItemSemiBoldtext>
+          <ShoppingCartItemPrice> {price}$</ShoppingCartItemPrice>
+        </ShoppingCartItemDetails>
       </ShoppingCartItemColumn>
 
       <ShoppingCartItemColumn>
-        <ShoppingCartItemDetails isQuantityColumn>Quantity: </ShoppingCartItemDetails>
-        <ShoppingCartItemNumberInput onChange={handleQuantityChange} value={localQuantity || ''} />
+        <ShoppingCartItemDetails isTextCentered>
+          <ShoppingCartItemSemiBoldtext>No:</ShoppingCartItemSemiBoldtext>
+        </ShoppingCartItemDetails>
+        <ShoppingCartItemNumberInput
+          onChange={handleQuantityChange}
+          value={localValues.quantity || ''}
+        />
+      </ShoppingCartItemColumn>
+
+      <ShoppingCartItemColumn>
+        <ShoppingCartItemDetails isTextCentered>
+          <ShoppingCartItemSemiBoldtext>Total price:</ShoppingCartItemSemiBoldtext>
+          <ShoppingCartItemTotalPrice>
+            {localValues.totalPriceOfItem.toFixed(2)}$
+          </ShoppingCartItemTotalPrice>
+        </ShoppingCartItemDetails>
       </ShoppingCartItemColumn>
 
       <ShoppingCartItemRemove onClick={handleRemoveShoppingCartItem}>Remove</ShoppingCartItemRemove>

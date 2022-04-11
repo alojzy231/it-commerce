@@ -28,6 +28,7 @@ export default function ProductImages({
   useEffect(() => {
     setProductImagesArray(productImagesData);
   }, [productImagesArray, productImagesData]);
+
   const handleImageMagnifying = (): void => {
     if (!isOnProductsPage) {
       dispatch(openModal('magnifyImage', productImagesArray[0]));

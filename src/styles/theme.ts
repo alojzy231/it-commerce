@@ -37,6 +37,7 @@ interface IMedias {
   tablet: string;
   bigMobile: string;
   mobile: string;
+  mediumMobile: string;
   smallMobile: string;
 }
 
@@ -45,6 +46,7 @@ export const medias: IMedias = {
   tablet: '1200px',
   bigMobile: '800px',
   mobile: '690px',
+  mediumMobile: '500px',
   smallMobile: '440px',
 };
 
