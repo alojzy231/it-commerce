@@ -6,7 +6,6 @@ import { TShoppingCartProduct } from '@customTypes/product';
 import { closeModal } from '@redux/actions/modalActions';
 import {
   changeQuantityOfItemInShoppingCart,
-  IProductShoppingCartAction,
   removeItemFromShoppingCart,
 } from '@redux/actions/shoppingCartActions';
 
@@ -28,6 +27,7 @@ interface IShoppingCartItem {
   shoppingCartProduct: TShoppingCartProduct;
   indexInShoppingCart: number;
   handleChangeTotalPrice: (newTotalPrice: number, indexInShoppingCart: number) => void;
+  handleRemoveShoppingCartItemTotalPriceChange: (indexInShoppingCart: number) => void;
 }
 
 interface ILocalValues {
@@ -39,6 +39,7 @@ export default function ShoppingCartItem({
   shoppingCartProduct,
   indexInShoppingCart,
   handleChangeTotalPrice,
+  handleRemoveShoppingCartItemTotalPriceChange,
 }: IShoppingCartItem): JSX.Element {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -86,8 +87,10 @@ export default function ShoppingCartItem({
     }
   };
 
-  const handleRemoveShoppingCartItem = (): IProductShoppingCartAction =>
+  const handleRemoveShoppingCartItem = (): void => {
     dispatch(removeItemFromShoppingCart(shoppingCartProduct));
+    handleRemoveShoppingCartItemTotalPriceChange(indexInShoppingCart);
+  };
 
   return (
     <ShoppingCartItemContainer>

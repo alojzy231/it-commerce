@@ -44,6 +44,12 @@ export default function ShoppingCartModalWindow(): JSX.Element {
     }
   };
 
+  const handleRemoveShoppingCartItemTotalPriceChange = (indexInShoppingCart: number): void => {
+    setShoppingItemsTotalPrices((prevState: number[]): number[] =>
+      prevState.filter((_, index) => index !== indexInShoppingCart),
+    );
+  };
+
   return (
     <GenericModalWindow title="Shopping cart">
       <ShoppingCartModalItemsContainer>
@@ -58,6 +64,9 @@ export default function ShoppingCartModalWindow(): JSX.Element {
                   shoppingCartProduct={shoppingCartItem}
                   indexInShoppingCart={indexInShoppingCart}
                   handleChangeTotalPrice={handleChangeTotalPrice}
+                  handleRemoveShoppingCartItemTotalPriceChange={
+                    handleRemoveShoppingCartItemTotalPriceChange
+                  }
                   key={`${shoppingCartItem.productId}-${shoppingCartItem.size}-${shoppingCartItem.color}`}
                 />
               ),
