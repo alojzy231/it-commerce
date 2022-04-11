@@ -27,7 +27,7 @@ export default function ProductImages({
 
   useEffect(() => {
     setProductImagesArray(productImagesData);
-  }, [productImagesArray, productImagesData]);
+  }, [productImagesData]);
 
   const handleImageMagnifying = (): void => {
     if (!isOnProductsPage) {
