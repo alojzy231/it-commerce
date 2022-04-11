@@ -75,7 +75,6 @@ export default function MinMaxRangeInput({
           $
         </MinMaxRangeInputDontWrap>
       </InputLabel>
-      <input type="range" />
       <MinMaxRangeInputRangeContainer>
         <MinMaxRangeInputRangeProgressbar position={rangeInput.progressbarPosition} />
         <MinMaxRangeInputRangeMinInput
