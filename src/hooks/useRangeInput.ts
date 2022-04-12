@@ -41,7 +41,6 @@ const useRangeInput = (
       maxPosition: defaultMaxValue,
     },
   });
-  console.log(defaultMinValue, defaultMaxValue);
 
   const handleMinValueInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
     const newValue = parseFloat(target.value);
