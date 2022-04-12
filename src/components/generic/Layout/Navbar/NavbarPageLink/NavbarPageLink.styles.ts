@@ -60,7 +60,7 @@ export const NavbarPageLinkWrapper = styled.li`
     visibility: hidden;
     position: ${({ isSidebar }: INavbarPageLinkWrapper): string =>
       isSidebar ? 'relative' : 'absolute'};
-    top: 100%;
+    top: 0;
 
     transition: all 0.2s linear;
   }
