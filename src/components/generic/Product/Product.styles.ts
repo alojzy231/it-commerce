@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import NumberInput from '@generic/inputs/NumberInput.styles';
-import { Header2, Header3, Header4, Header5 } from '@styles/typography';
+import { Header1, Header2, Header3, Header4, Header5 } from '@styles/typography';
 import GenericButton from '@generic/buttons/GenericButton';
 
 interface IProductPrice {
@@ -24,6 +24,23 @@ export const ProductContainer = styled.article`
 export const ProductContentSection = styled.div`
   @media (max-width: ${({ theme: { medias } }): string => medias.tablet}) {
     margin-bottom: 6.4rem;
+  }
+`;
+export const ProductHeaderOnHomepage = styled.h2`
+  max-width: 73.5rem;
+
+  margin-bottom: 6.4rem;
+
+  ${Header1};
+
+  @media (max-width: ${({ theme: { medias } }): string => medias.bigMobile}) {
+    ${Header2};
+  }
+  @media (max-width: ${({ theme: { medias } }): string => medias.mobile}) {
+    margin-bottom: 2.4rem;
+
+    ${Header4};
+    font-weight: bold;
   }
 `;
 export const ProductName = styled.h1`

@@ -15,6 +15,7 @@ import { openModal } from '@redux/actions/modalActions';
 import {
   ProductContainer,
   ProductContentSection,
+  ProductHeaderOnHomepage,
   ProductName,
   ProductNameOnHomepage,
   ProductSeeProductButton,
@@ -121,7 +122,11 @@ export default function Product({ productData, isOnHomepage }: IProduct): JSX.El
       <ProductImages productImagesData={productImages} />
       <ProductContentSection>
         <HighlightedTitle>
-          <ProductName>{isOnHomepage ? 'Check this out' : productName}</ProductName>
+          {isOnHomepage ? (
+            <ProductHeaderOnHomepage>Check this out</ProductHeaderOnHomepage>
+          ) : (
+            <ProductName>{productName}</ProductName>
+          )}
         </HighlightedTitle>
         {isOnHomepage && <ProductNameOnHomepage>{productName}</ProductNameOnHomepage>}
         <ProductDetailsSection>
