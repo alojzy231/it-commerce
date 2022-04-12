@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
 import { TProduct } from '@customTypes/product';
-import { EProductsCollections, EProductsSizes, ESortByOptions } from '@consts/products';
+import { IFilterQueryOptions } from '@customTypes/filterOptions';
+import { EProductsCollections } from '@consts/products';
 
 import {
   filterByCollection,
@@ -13,23 +14,13 @@ import {
 } from './productsFilter';
 import productsSortBy from './productsSortBy';
 
-interface IUseFilterOptions {
-  sortBy?: ESortByOptions;
-  search?: string;
-  collection?: EProductsCollections;
-  size?: EProductsSizes;
-  priceMin?: number;
-  priceMax?: number;
-  onSale?: string;
-}
-
-const useFilterOptions = (productsData: TProduct[]): TProduct[] => {
+const useFilterData = (productsData: TProduct[]): TProduct[] => {
   const { query } = useRouter();
 
   const [products, setProducts] = useState<TProduct[]>(productsData);
 
   useEffect((): void => {
-    const { sortBy, search, collection, size, priceMin, priceMax, onSale }: IUseFilterOptions =
+    const { sortBy, search, collection, size, priceMin, priceMax, onSale }: IFilterQueryOptions =
       query;
 
     let filterProducts = [...productsData];
@@ -60,9 +51,7 @@ const useFilterOptions = (productsData: TProduct[]): TProduct[] => {
     }
 
     if (sortBy) {
-      const sortByOption = Number(sortBy);
-
-      filterProducts = productsSortBy(filterProducts, sortByOption);
+      filterProducts = productsSortBy(filterProducts, sortBy);
     }
 
     setProducts(filterProducts);
@@ -72,4 +61,4 @@ const useFilterOptions = (productsData: TProduct[]): TProduct[] => {
   return products;
 };
 
-export default useFilterOptions;
+export default useFilterData;

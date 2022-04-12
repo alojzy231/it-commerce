@@ -26,6 +26,8 @@ interface IMinMaxRangeInput {
   name?: string;
   minValue: number;
   maxValue: number;
+  defaultMinValue: number;
+  defaultMaxValue: number;
   getValues: (minMaxRangeInputValues: TMinMaxRangeInputValues) => void;
 }
 
@@ -34,11 +36,15 @@ export default function MinMaxRangeInput({
   name,
   minValue,
   maxValue,
+  defaultMinValue,
+  defaultMaxValue,
   getValues,
 }: IMinMaxRangeInput): JSX.Element {
   const [rangeInput, handleMinValueChange, handleMaxValueChange] = useRangeInput(
     minValue,
     maxValue,
+    defaultMinValue,
+    defaultMaxValue,
   );
 
   useEffect((): void => {

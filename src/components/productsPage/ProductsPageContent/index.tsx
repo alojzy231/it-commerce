@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import { TProduct } from '@customTypes/product';
 import SearchInput from '@generic/inputs/SearchInput.styles';
-import useFilterOptions from '@hooks/useFilterOptions';
+import useFilterData from '@hooks/useFilterData';
 
 import ProductsPageProducts from './ProductsPageProducts';
 import {
@@ -20,7 +20,7 @@ interface IProductsPageContent {
 export default function ProductsPageContent({ productsData }: IProductsPageContent): JSX.Element {
   const router = useRouter();
 
-  const products: TProduct[] = useFilterOptions(productsData);
+  const products: TProduct[] = useFilterData(productsData);
 
   const [searchInputValue, setSearchInputValue] = useState<string>('');
 

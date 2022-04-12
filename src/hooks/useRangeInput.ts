@@ -21,21 +21,27 @@ type TUseRangeInputReturnType = [
   ({ target }: React.ChangeEvent<HTMLInputElement>) => void,
 ];
 
-const useRangeInput = (minValue: number, maxValue: number): TUseRangeInputReturnType => {
+const useRangeInput = (
+  minValue: number,
+  maxValue: number,
+  defaultMinValue: number,
+  defaultMaxValue: number,
+): TUseRangeInputReturnType => {
   const [rangeInput, setRangeInput] = useState<IRangeInput>({
     currentValues: {
-      minValue: 0,
-      maxValue,
+      minValue: defaultMinValue || minValue,
+      maxValue: defaultMaxValue || maxValue,
     },
     progressbarPosition: {
-      left: 0,
-      right: 0,
+      left: (defaultMinValue / maxValue) * 100,
+      right: 100 - (defaultMaxValue / maxValue) * 100,
     },
     progressbarThumbPosition: {
-      minPosition: 0,
-      maxPosition: maxValue,
+      minPosition: defaultMinValue,
+      maxPosition: defaultMaxValue,
     },
   });
+  console.log(defaultMinValue, defaultMaxValue);
 
   const handleMinValueInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>): void => {
     const newValue = parseFloat(target.value);

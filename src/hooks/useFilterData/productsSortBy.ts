@@ -1,4 +1,3 @@
-import { ESortByOptions } from '@consts/products';
 import { TProduct } from '@customTypes/product';
 
 const sortByNewest = (products: TProduct[]): TProduct[] => {
@@ -43,17 +42,17 @@ const sortByPriceHighest = (products: TProduct[]): TProduct[] => {
   return sortedProducts;
 };
 
-const productsSortBy = (products: TProduct[], sortByOption: number): TProduct[] => {
+const productsSortBy = (products: TProduct[], sortByOption: string): TProduct[] => {
   let sortedProducts: TProduct[] = [...products];
 
   switch (sortByOption) {
-    case ESortByOptions.oldest:
+    case 'oldest':
       sortedProducts = sortByOldest(sortedProducts);
       break;
-    case ESortByOptions['price by lowest']:
+    case 'price by lowest':
       sortedProducts = sortByPriceLowest(sortedProducts);
       break;
-    case ESortByOptions['price by highest']:
+    case 'price by highest':
       sortedProducts = sortByPriceHighest(sortedProducts);
       break;
     default:

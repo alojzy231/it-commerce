@@ -1,8 +1,11 @@
+export const PRODUCT_MIN_PRICE = 0;
+export const PRODUCT_MAX_PRICE = 100;
+
 export enum ESortByOptions {
-  'newest',
-  'oldest',
-  'price by lowest',
-  'price by highest',
+  'newest' = 'newest',
+  'oldest' = 'oldest',
+  'price by lowest' = 'price by lowest',
+  'price by highest' = 'price by highest',
 }
 
 export enum EProductsCollections {
